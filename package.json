@@ -1,0 +1,28 @@
+{
+  "name": "group-project-react-ts",
+  "packageManager": "yarn@3.2.3",
+  "scripts": {
+    "dev": "webpack serve",
+    "build": "webpack --mode=production"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.16",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/webpack": "^5.28.0",
+    "@types/webpack-dev-server": "^4.7.2",
+    "@yarnpkg/pnpify": "^4.0.0-rc.18",
+    "html-webpack-plugin": "^5.5.0",
+    "ts-loader": "^9.3.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.3",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.0",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
