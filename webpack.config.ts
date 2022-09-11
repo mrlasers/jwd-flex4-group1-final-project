@@ -6,7 +6,7 @@ import { Configuration } from 'webpack'
 import { merge } from 'webpack-merge'
 
 const commonConfig: Configuration = {
-  entry: "./src/index.ts",
+  entry: "./src/index.tsx",
   module: {
     rules: [
       {
@@ -24,7 +24,12 @@ const commonConfig: Configuration = {
     path: Path.resolve(__dirname, "dist"),
     clean: true,
   },
-  plugins: [new HtmlWebpackPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "React TypeScript Webpack App",
+      xhtml: true,
+    }),
+  ],
 }
 
 const devConfig: Configuration = {
