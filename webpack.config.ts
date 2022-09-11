@@ -13,6 +13,14 @@ const commonConfig: Configuration = {
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
+  module: {
+    rules: [
+      {
+        test: /\.s[ac]ss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+    ],
+  },
   output: {
     filename: "[name].js",
     path: Path.resolve(__dirname, "dist"),
