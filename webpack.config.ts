@@ -1,21 +1,15 @@
 import 'webpack-dev-server'
 
-import * as HtmlWebpackPlugin from 'html-webpack-plugin'
-import * as Path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import Path from 'path'
+import ReactRefreshTypeScript from 'react-refresh-typescript'
 import { Configuration } from 'webpack'
 import { merge } from 'webpack-merge'
 
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
+
 const commonConfig: Configuration = {
   entry: "./src/index.tsx",
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: "ts-loader",
-        exclude: /node_modules/,
-      },
-    ],
-  },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
@@ -34,11 +28,32 @@ const commonConfig: Configuration = {
 
 const devConfig: Configuration = {
   mode: "development",
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: require.resolve("ts-loader"),
+            options: {
+              getCustomTransformers: () => ({
+                before: [ReactRefreshTypeScript()],
+              }),
+              transpileOnly: true,
+            },
+          },
+        ],
+        exclude: /node_modules/,
+      },
+    ],
+  },
+  plugins: [new ReactRefreshWebpackPlugin()],
   devtool: "inline-source-map",
   devServer: {
     // static: {
     //   directory: Path.join(__dirname, "public"),
     // },
+    hot: true,
     compress: false,
     port: 9001,
   },

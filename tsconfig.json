@@ -8,6 +8,8 @@
     "sourceMap": true,
     "strict": true,
     "target": "ES3",
-    "lib": ["DOM"]
+    "lib": ["DOM"],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   }
 }
