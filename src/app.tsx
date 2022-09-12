@@ -1,10 +1,10 @@
-import './app.scss'
-
 import * as React from 'react'
 
-export const App: React.FC<{}> = () => {
+import styles from './app.module.scss'
+
+export const App = () => {
   return (
-    <>
+    <div className={styles.container}>
       <h1>React App is Go!</h1>
       <div>
         <p>
@@ -12,6 +12,6 @@ export const App: React.FC<{}> = () => {
           still cool.
         </p>
       </div>
-    </>
+    </div>
   )
 }
