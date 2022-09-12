@@ -1,10 +1,15 @@
 import * as React from 'react'
+import { Helmet } from 'react-helmet-async'
 
 import styles from './app.module.scss'
 
 export const App = () => {
   return (
     <div className={styles.container}>
+      <Helmet>
+        <title>Boop!</title>
+      </Helmet>
+
       <header>
         <h1>React App is Go!</h1>
       </header>
@@ -15,6 +20,7 @@ export const App = () => {
           still cool.
         </p>
       </main>
+
       <footer>“Don't be a narc.” –Tylor Durden</footer>
     </div>
   )
