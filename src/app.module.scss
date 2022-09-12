@@ -1,8 +1,43 @@
 :root {
-  --brand-color: orange;
+  --primary-color: dodgerblue;
+  --secondary-color: orangered;
+  --dark-color: black;
+  --grey-color: darkslategrey;
+  --light-color: snow;
+
+  --fg-color: var(--dark-color);
+  --bg-color: var(--light-color);
 }
 
 .container {
-  background-color: darkslategrey;
-  color: white;
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  header {
+    --bg-color: var(--secondary-color);
+    --fg-color: var(--light-color);
+
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    padding: 1rem 2rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  footer {
+    --fg-color: var(--light-color);
+    --bg-color: var(--dark-color);
+
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    margin-top: auto;
+    padding: 1rem;
+    text-align: center;
+  }
 }

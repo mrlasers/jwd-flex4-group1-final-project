@@ -5,13 +5,17 @@ import styles from './app.module.scss'
 export const App = () => {
   return (
     <div className={styles.container}>
-      <h1>React App is Go!</h1>
-      <div>
+      <header>
+        <h1>React App is Go!</h1>
+      </header>
+
+      <main>
         <p>
           Here's the React app. It has hot reloading, which is table stakes, but
           still cool.
         </p>
-      </div>
+      </main>
+      <footer>“Don't be a narc.” –Tylor Durden</footer>
     </div>
   )
 }
