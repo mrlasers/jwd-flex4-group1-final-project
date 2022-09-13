@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Helmet } from 'react-helmet-async'
 
 import styles from './app.module.scss'
+import { OverflowInput } from './components/OverflowInput'
 
 export const App = () => {
   const [username, setUsername] = React.useState<string>("")
@@ -30,22 +31,28 @@ export const App = () => {
           <h3>Create a Todo</h3>
           <label>
             <span className="caption">What's on your todo list?</span>
-            <input
-              type="text"
+            <OverflowInput
               placeholder="e.g., Take a nap"
               name="title"
               data-lpignore
             />
           </label>
 
-          {/* <fieldset className="tile">
+          <fieldset className={styles.radioSet}>
+            <legend>Pick a category</legend>
             <label>
               <input type="radio" name="category" value="work" />
-              <span className="bubble">Work</span>
+              <b></b>
+              <span>Work</span>
             </label>
-          </fieldset> */}
+            <label>
+              <input type="radio" name="category" value="other" />
+              <b></b>
+              <span>Other</span>
+            </label>
+          </fieldset>
 
-          {/* <button type="submit">Add todo</button> */}
+          <button type="submit">Add todo</button>
         </form>
       </main>
 
