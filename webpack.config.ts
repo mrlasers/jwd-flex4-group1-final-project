@@ -74,7 +74,7 @@ const devConfig: Configuration = {
     // },
     hot: true,
     compress: false,
-    port: 9001,
+    port: 8080,
   },
   performance: {
     hints: false,
