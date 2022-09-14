@@ -4,7 +4,7 @@ import { themeToggle } from './ThemeToggle.module.scss'
 
 type Props = {
   value: boolean
-  onChange: (value: boolean) => void
+  onChange: (isDarkMode: boolean) => void
 }
 
 export const ThemeToggle: React.FC<Props> = ({ value, onChange }) => {

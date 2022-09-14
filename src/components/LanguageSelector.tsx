@@ -32,7 +32,7 @@ export const LanguageSelector: React.FC<Props> = ({
       </span>
       <Flag
         className={selectedLanguage === "es" ? "" : "selected"}
-        countryCode="MX"
+        countryCode="ES"
         style={{ fontSize: "2em", lineHeight: "2em" }}
         svg={true}
         onClick={() => onChange("es")}

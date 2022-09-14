@@ -2,19 +2,7 @@ import * as React from 'react'
 import { VscAdd, VscClose, VscEdit, VscSave, VscTrash } from 'react-icons/vsc'
 
 import styles from '../styles/components.module.scss'
-import { TodoCategory } from '../types'
-
-type AddCategory = {
-  type: "ADD_CATEGORY"
-  payload: string
-}
-
-type UpdateCategory = {
-  type: "UPDATE_CATEGORY"
-  payload: TodoCategory
-}
-
-export type CategoryUpdate = AddCategory | UpdateCategory
+import { CategoryUpdate, TodoCategory, UpdateCategory } from '../types'
 
 // type CategoryUpdate = {
 //   type:
@@ -51,7 +39,7 @@ export const CategoryPicker: React.FC<Props> = ({
     setSelCat(selected)
     // console.log("newCatRef.current", newCatRef.current)
     newCatRef.current?.focus()
-  }, [selected, showEdit, selCat, categories])
+  }, [selected, showEdit])
 
   function handleNewCategory() {
     updateCategories({
@@ -67,39 +55,41 @@ export const CategoryPicker: React.FC<Props> = ({
     <fieldset className={styles.radioSet + (showEdit ? " edit" : "")}>
       <legend className={styles.addCategory}>
         {title}
-        {!showEdit ? null : (
-          <div>
-            <input
-              type="text"
-              placeholder="Next category name"
-              ref={newCatRef}
-              onKeyDown={(e) => {
-                if (e.key.toLowerCase() === "enter") {
-                  e.preventDefault()
-                  handleNewCategory()
-                }
-              }}
-              onChange={(e) => {
-                setNewCategory(e.currentTarget.value)
-              }}
-            />
-            <button
-              type="button"
-              className="default"
-              onClick={handleNewCategory}
-            >
-              <VscSave />
-            </button>
-          </div>
-        )}
-        <button
-          type="button"
-          onClick={() => {
-            setShowEdit(!showEdit)
-          }}
-        >
-          {showEdit ? <VscClose /> : <VscEdit />}
-        </button>
+        <div>
+          {!showEdit ? null : (
+            <>
+              <input
+                type="text"
+                placeholder="Next category name"
+                ref={newCatRef}
+                onKeyDown={(e) => {
+                  if (e.key.toLowerCase() === "enter") {
+                    e.preventDefault()
+                    handleNewCategory()
+                  }
+                }}
+                onChange={(e) => {
+                  setNewCategory(e.currentTarget.value)
+                }}
+              />
+              <button
+                type="button"
+                className="default"
+                onClick={handleNewCategory}
+              >
+                <VscAdd />
+              </button>
+            </>
+          )}
+          <button
+            type="button"
+            onClick={() => {
+              setShowEdit(!showEdit)
+            }}
+          >
+            {showEdit ? <VscClose /> : <VscEdit />}
+          </button>
+        </div>
       </legend>
       {categories.map((category) => {
         const isChecked = selected === category.id

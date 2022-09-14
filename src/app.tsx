@@ -7,11 +7,12 @@ import { initReactI18next, useTranslation } from 'react-i18next'
 import { VscAdd, VscEdit } from 'react-icons/vsc'
 
 import styles from './app.module.scss'
-import { CategoryPicker, CategoryUpdate } from './components/CategoryPicker'
+import { CategoryPicker } from './components/CategoryPicker'
 import { LanguageSelector } from './components/LanguageSelector'
 import { OverflowInput } from './components/OverflowInput'
 import { ThemeToggle } from './components/ThemeToggle'
-import { Todo, TodoCategory } from './types'
+import { rootReducer } from './store'
+import { Action, AppState, Todo, TodoCategory, UpdateCategory } from './types'
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -53,24 +54,6 @@ i18n.use(initReactI18next).init({
   },
 })
 
-type State = {
-  todos: Todo[]
-  categories: TodoCategory[]
-}
-
-type Action =
-  | {
-      type: "ADD_TODO"
-      payload: Todo
-    }
-  | CategoryUpdate
-  | ReplaceCategories
-
-type ReplaceCategories = {
-  type: "REPLACE_CATEGORIES"
-  payload: TodoCategory[]
-}
-
 const categoryReducer: React.Reducer<TodoCategory[], Action> = (
   state,
   action
@@ -99,66 +82,27 @@ const categoryReducer: React.Reducer<TodoCategory[], Action> = (
   }
 }
 
-const stateReducer: React.Reducer<State, Action> = (state, action) => {
-  console.log("action.type", action.type, JSON.stringify(action.payload))
-  switch (action.type) {
-    default:
-      return state
-    case "ADD_CATEGORY": {
-      const newCat = action.payload.trim()
-      if (state.categories.find((cat) => cat.name === newCat)) {
-        return state
-      }
+const savedState = localStorage.getItem("tasks-app")
 
-      return {
-        ...state,
-        categories: [
-          ...state.categories,
-          {
-            id: nanoid(),
-            name: newCat,
-          },
-        ],
-      }
+const initialState: AppState = savedState
+  ? JSON.parse(savedState)
+  : {
+      todos: [],
+      categories: [
+        {
+          id: "work",
+          name: "Work",
+        },
+        {
+          id: "fun",
+          name: "Fun",
+        },
+        {
+          id: "other",
+          name: "Other",
+        },
+      ],
     }
-    case "UPDATE_CATEGORY": {
-      const { name, id } = action.payload
-
-      return !name.length
-        ? state
-        : {
-            ...state,
-            categories: state.categories.map((cat) =>
-              cat.id === id ? { id, name } : cat
-            ),
-          }
-    }
-    case "ADD_TODO": {
-      return {
-        ...state,
-        todos: [...state.todos, action.payload],
-      }
-    }
-  }
-}
-
-const initialState: State = {
-  todos: [],
-  categories: [
-    {
-      id: "work",
-      name: "Work",
-    },
-    {
-      id: "fun",
-      name: "Fun",
-    },
-    {
-      id: "other",
-      name: "Other",
-    },
-  ],
-}
 
 type FormData = Omit<Todo, "id">
 
@@ -170,14 +114,16 @@ const emptyFormData: FormData = {
 export const App = () => {
   const [username, setUsername] = React.useState<string>("")
   const [darkTheme, setDarkTheme] = React.useState<boolean>(false)
-  const [state, dispatch] = React.useReducer<typeof stateReducer>(
-    stateReducer,
+  const [state, dispatch] = React.useReducer<typeof rootReducer>(
+    rootReducer,
     initialState
   )
 
-  // React.useEffect(() => {
-  //   console.log(JSON.stringify(state.categories, null, 2))
-  // }, [state])
+  React.useEffect(() => {
+    // console.log("statestate", JSON.stringify(state, null, 2))
+
+    localStorage.setItem("tasks-app", JSON.stringify(state))
+  }, [state])
 
   const { t, i18n } = useTranslation()
 
@@ -229,7 +175,7 @@ export const App = () => {
                 countryCode: "US",
                 languageCode: "en",
               },
-              { countryCode: "MX", languageCode: "es" },
+              { countryCode: "ES", languageCode: "es" },
             ]}
             onChange={changeLanguage}
           />
