@@ -9,7 +9,12 @@ type AddCategory = {
   payload: string
 }
 
-export type CategoryUpdate = AddCategory
+type UpdateCategory = {
+  type: "UPDATE_CATEGORY"
+  payload: TodoCategory
+}
+
+export type CategoryUpdate = AddCategory | UpdateCategory
 
 // type CategoryUpdate = {
 //   type:
@@ -108,7 +113,25 @@ export const CategoryPicker: React.FC<Props> = ({
               checked={category.id === selected}
             />
             <b />
-            <span>{category.name}</span>
+            {/* <input type="text" defaultValue="buttholes" />
+            <span>buttholes</span> */}
+            {!showEdit ? (
+              <span>{category.name}</span>
+            ) : (
+              <input
+                type="text"
+                defaultValue={category.name}
+                onChange={(e) => {
+                  updateCategories({
+                    type: "UPDATE_CATEGORY",
+                    payload: {
+                      ...category,
+                      name: e.currentTarget.value,
+                    },
+                  })
+                }}
+              />
+            )}
           </label>
         )
       })}

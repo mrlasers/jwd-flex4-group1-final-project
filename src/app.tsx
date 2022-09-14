@@ -121,6 +121,18 @@ const stateReducer: React.Reducer<State, Action> = (state, action) => {
         ],
       }
     }
+    case "UPDATE_CATEGORY": {
+      const { name, id } = action.payload
+
+      return !name.length
+        ? state
+        : {
+            ...state,
+            categories: state.categories.map((cat) =>
+              cat.id === id ? { id, name } : cat
+            ),
+          }
+    }
     case "ADD_TODO": {
       return {
         ...state,

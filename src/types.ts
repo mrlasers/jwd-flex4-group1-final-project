@@ -3,4 +3,8 @@ export type TodoCategory = {
   name: string
 }
 
-export type Todo = {}
+export type Todo = {
+  id: string
+  title: string
+  category: string
+}

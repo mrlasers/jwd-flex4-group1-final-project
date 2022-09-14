@@ -116,8 +116,20 @@
     background-color: white;
     box-shadow: var(--box-shadow);
 
-    input {
+    input[type="radio"] {
       display: none;
+    }
+
+    input[type="text"],
+    span {
+      border: 1px solid coral;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      appearance: none;
+      font-size: 1.125rem;
     }
 
     input:checked ~ b {
