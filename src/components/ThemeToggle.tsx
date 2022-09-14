@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { themeToggle } from './ThemeToggle.module.scss'
+import styles from './ThemeToggle.module.scss'
 
 type Props = {
   value: boolean
@@ -8,5 +8,5 @@ type Props = {
 }
 
 export const ThemeToggle: React.FC<Props> = ({ value, onChange }) => {
-  return <button className={themeToggle}>Your code goes here</button>
+  return <button className={styles.themeToggle}>Your code goes here</button>
 }

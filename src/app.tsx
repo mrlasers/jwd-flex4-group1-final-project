@@ -7,10 +7,13 @@ import { initReactI18next, useTranslation } from 'react-i18next'
 import { VscAdd, VscEdit } from 'react-icons/vsc'
 
 import styles from './app.module.scss'
-import { CategoryPicker } from './components/CategoryPicker'
-import { LanguageSelector } from './components/LanguageSelector'
-import { OverflowInput } from './components/OverflowInput'
-import { ThemeToggle } from './components/ThemeToggle'
+import {
+  CategoryPicker,
+  LanguageSelector,
+  OverflowInput,
+  TaskCard,
+  ThemeToggle,
+} from './components'
 import { rootReducer } from './store'
 import { Action, AppState, Todo, TodoCategory, UpdateCategory } from './types'
 
@@ -233,13 +236,13 @@ export const App = () => {
           <button type="submit">{t("add todo")}</button>
         </form>
 
-        <div>
+        <ul>
           {state.todos.map((todo) => (
-            <div key={todo.id}>
-              {todo.title} ({todo.category})
-            </div>
+            <li>
+              <TaskCard key={todo.id} todo={todo} />
+            </li>
           ))}
-        </div>
+        </ul>
       </main>
 
       <pre>
