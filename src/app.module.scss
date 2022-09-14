@@ -35,6 +35,13 @@
 }
 
 .header {
+  // position: fixed;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: var(--secondary-color);
+}
+
+.formGreeting {
   display: flex;
   align-items: baseline;
   justify-content: flex-start;
@@ -114,6 +121,7 @@
     padding: 1.5rem;
     border-radius: 0.5rem;
     flex: 1;
+    cursor: pointer;
 
     background-color: white;
     box-shadow: var(--box-shadow);
