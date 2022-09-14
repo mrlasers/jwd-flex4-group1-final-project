@@ -47,5 +47,21 @@ export const rootReducer: React.Reducer<AppState, Action> = (state, action) => {
         todos: [...state.todos, action.payload],
       }
     }
+    case "UPDATE_TODO": {
+      return {
+        ...state,
+        todos: state.todos.map((todo) =>
+          todo.id !== action.payload.id
+            ? todo
+            : { ...action.payload, id: todo.id }
+        ),
+      }
+    }
+    case "DELETE_TODO": {
+      return {
+        ...state,
+        todos: state.todos.filter((todo) => todo.id !== action.payload.id),
+      }
+    }
   }
 }

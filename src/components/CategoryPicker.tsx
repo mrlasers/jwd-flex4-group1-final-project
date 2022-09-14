@@ -3,15 +3,7 @@ import { VscAdd, VscClose, VscEdit, VscSave, VscTrash } from 'react-icons/vsc'
 
 import styles from '../styles/components.module.scss'
 import { CategoryUpdate, TodoCategory, UpdateCategory } from '../types'
-
-// type CategoryUpdate = {
-//   type:
-//     | "ADD_CATEGORY"
-//     | "DELETE_CATEGORY"
-//     | "UPDATE_CATEGORY"
-//     | "SELECT_CATEGORY"
-//   category: TodoCategory
-// }
+import { Bubble } from './Bubble'
 
 type Props = {
   title: string
@@ -102,9 +94,7 @@ export const CategoryPicker: React.FC<Props> = ({
               onChange={onChange}
               checked={category.id === selected}
             />
-            <b />
-            {/* <input type="text" defaultValue="buttholes" />
-            <span>buttholes</span> */}
+            <Bubble filled={isChecked} />
             {!showEdit ? (
               <span>{category.name}</span>
             ) : (

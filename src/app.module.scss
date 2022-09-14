@@ -23,6 +23,11 @@
 
   --bg-color: var(--bottom-color-bg);
   --fg-color: var(--bottom-color-fg);
+
+  --bubble-color: purple;
+
+  --tile-border-radius: 0.5rem;
+  --button-border-radius: 0.25em;
 }
 
 .container {
@@ -137,8 +142,10 @@
       // display: block;
       background-color: var(--middle-color-bg);
       color: var(--middle-color-fg);
-      border-radius: 0.5em;
-      padding: 1rem 1.5rem;
+      border-radius: var(--tile-border-radius);
+      // padding: 1rem 1.5rem;
+      padding: calc(var(--tile-border-radius) * 2)
+        calc(var(--tile-border-radius) * 3);
       font-size: 1.125rem;
 
       box-shadow: var(--box-shadow);

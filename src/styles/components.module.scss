@@ -67,10 +67,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0.25em;
+      padding: var(--button-border-radius);
       // border: 2px solid coral;
       border: 0;
-      border-radius: 0.25em;
+      border-radius: var(--button-border-radius);
       background-color: rgba(0 0 0 / 0.2);
       color: white;
 
@@ -108,14 +108,13 @@
     // }
 
     &:first-of-type {
-      border-radius: 0.5rem 0.5rem 0 0;
+      border-radius: var(--tile-border-radius) var(--tile-border-radius) 0 0;
     }
 
     &:last-of-type {
-      border-radius: 0 0 0.5rem 0.5rem;
+      border-radius: 0 0 var(--tile-border-radius) var(--tile-border-radius);
     }
 
-    // border-radius: 0.5rem;
     flex: 1;
     cursor: pointer;
 
@@ -137,46 +136,6 @@
       background-color: inherit;
       color: inherit;
     }
-
-    input:checked ~ b {
-      &::after {
-        background-color: dodgerblue;
-      }
-    }
-
-    b {
-      position: relative;
-      display: block;
-      flex-direction: column;
-      align-items: center;
-      // background-color: papayawhip;
-      height: 1em;
-      aspect-ratio: 1;
-
-      &::before {
-        position: absolute;
-        content: "";
-        display: block;
-        border: 0.1em solid dodgerblue;
-        border-radius: 100vw;
-        height: 1em;
-        height: 100%;
-        aspect-ratio: 1;
-      }
-
-      &::after {
-        position: absolute;
-        content: "";
-        display: block;
-        // border: 0.1em solid dodgerblue;
-        // background-color: red;
-        border-radius: 100vw;
-        height: 60%;
-        top: 20%;
-        left: 20%;
-        aspect-ratio: 1;
-      }
-    }
   }
 }
 
@@ -193,7 +152,7 @@
       &,
       &:first-of-type,
       &:last-of-type {
-        border-radius: 0.5rem;
+        border-radius: var(--tile-border-radius);
       }
 
       input {
@@ -201,4 +160,50 @@
       }
     }
   }
+}
+
+.bubble {
+  // --bubble-color: blue;
+
+  position: relative;
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  height: 1em;
+  aspect-ratio: 1;
+
+  &::before {
+    position: absolute;
+    content: "";
+    display: block;
+    border: 0.1em solid var(--bubble-color);
+    border-radius: 100vw;
+    height: 1em;
+    height: 100%;
+    aspect-ratio: 1;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    display: block;
+    border-radius: 100vw;
+    height: 60%;
+    top: 20%;
+    left: 20%;
+    aspect-ratio: 1;
+    background-color: var(--bubble-color);
+    opacity: 0;
+  }
+
+  &[data-filled="true"]::after {
+    // background-color: var(--bubble-color);
+    opacity: 1;
+  }
+
+  // input:checked ~ b {
+  //   &::after {
+  //     background-color: dodgerblue;
+  //   }
+  // }
 }

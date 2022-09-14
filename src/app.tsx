@@ -11,7 +11,7 @@ import {
   CategoryPicker,
   LanguageSelector,
   OverflowInput,
-  TaskCard,
+  TaskCardList,
   ThemeToggle,
 } from './components'
 import { rootReducer } from './store'
@@ -112,6 +112,7 @@ type FormData = Omit<Todo, "id">
 const emptyFormData: FormData = {
   title: "",
   category: "other",
+  done: false,
 }
 
 export const App = () => {
@@ -236,13 +237,11 @@ export const App = () => {
           <button type="submit">{t("add todo")}</button>
         </form>
 
-        <ul>
-          {state.todos.map((todo) => (
-            <li>
-              <TaskCard key={todo.id} todo={todo} />
-            </li>
-          ))}
-        </ul>
+        <TaskCardList
+          todos={state.todos}
+          onChange={(todo) => dispatch({ type: "UPDATE_TODO", payload: todo })}
+          onDelete={(todo) => dispatch({ type: "DELETE_TODO", payload: todo })}
+        />
       </main>
 
       <pre>

@@ -12,6 +12,7 @@ export type Todo = {
   id: string
   title: string
   category: string
+  done: boolean
 }
 
 export type AddCategory = {
@@ -26,13 +27,12 @@ export type UpdateCategory = {
 
 export type CategoryUpdate = AddCategory | UpdateCategory
 
-export type Action =
-  | {
-      type: "ADD_TODO"
-      payload: Todo
-    }
-  | CategoryUpdate
-  | ReplaceCategories
+export type TodoAction = {
+  type: "ADD_TODO" | "UPDATE_TODO" | "DELETE_TODO"
+  payload: Todo
+}
+
+export type Action = TodoAction | CategoryUpdate | ReplaceCategories
 
 export type ReplaceCategories = {
   type: "REPLACE_CATEGORIES"

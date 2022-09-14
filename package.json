@@ -32,6 +32,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@emotion/css": "^11.10.0",
     "i18next": "^21.9.1",
     "nanoid": "3.3.4",
     "react": "^18.2.0",
