@@ -31,6 +31,9 @@
   }
 
   footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: auto;
     background-color: var(--fg-color);
     color: var(--bg-color);
