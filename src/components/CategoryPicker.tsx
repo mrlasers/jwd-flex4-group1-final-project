@@ -46,7 +46,7 @@ export const CategoryPicker: React.FC<Props> = ({
     setSelCat(selected)
     // console.log("newCatRef.current", newCatRef.current)
     newCatRef.current?.focus()
-  }, [selected, showEdit, selCat])
+  }, [selected, showEdit, selCat, categories])
 
   function handleNewCategory() {
     updateCategories({

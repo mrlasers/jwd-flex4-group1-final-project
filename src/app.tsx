@@ -1,4 +1,5 @@
 import i18n from 'i18next'
+import { nanoid } from 'nanoid'
 import * as React from 'react'
 import Flag from 'react-country-flag'
 import { Helmet } from 'react-helmet-async'
@@ -63,8 +64,14 @@ type Action =
       payload: Todo
     }
   | CategoryUpdate
+  | ReplaceCategories
 
-const categoryReducer: React.Reducer<TodoCategory[], CategoryUpdate> = (
+type ReplaceCategories = {
+  type: "REPLACE_CATEGORIES"
+  payload: TodoCategory[]
+}
+
+const categoryReducer: React.Reducer<TodoCategory[], Action> = (
   state,
   action
 ) => {
@@ -80,22 +87,44 @@ const categoryReducer: React.Reducer<TodoCategory[], CategoryUpdate> = (
       return [
         ...state,
         {
-          id: "27839892939823928329",
+          id: nanoid(),
           name: newCat,
         },
       ]
+    }
+    case "REPLACE_CATEGORIES": {
+      console.log("replacing categories with", action.payload)
+      return action.payload
     }
   }
 }
 
 const stateReducer: React.Reducer<State, Action> = (state, action) => {
+  console.log("action.type", action.type, JSON.stringify(action.payload))
   switch (action.type) {
     default:
       return state
     case "ADD_CATEGORY": {
+      const newCat = action.payload.trim()
+      if (state.categories.find((cat) => cat.name === newCat)) {
+        return state
+      }
+
       return {
         ...state,
-        categories: categoryReducer(state.categories, action),
+        categories: [
+          ...state.categories,
+          {
+            id: nanoid(),
+            name: newCat,
+          },
+        ],
+      }
+    }
+    case "ADD_TODO": {
+      return {
+        ...state,
+        todos: [...state.todos, action.payload],
       }
     }
   }
@@ -119,10 +148,7 @@ const initialState: State = {
   ],
 }
 
-type FormData = {
-  title: string
-  category: string
-}
+type FormData = Omit<Todo, "id">
 
 const emptyFormData: FormData = {
   title: "",
@@ -136,6 +162,10 @@ export const App = () => {
     stateReducer,
     initialState
   )
+
+  // React.useEffect(() => {
+  //   console.log(JSON.stringify(state.categories, null, 2))
+  // }, [state])
 
   const { t, i18n } = useTranslation()
 
@@ -156,6 +186,20 @@ export const App = () => {
 
   function changeLanguage(lang: "en" | "es") {
     i18n.changeLanguage(lang)
+  }
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+
+    console.log(formData)
+
+    dispatch({
+      type: "ADD_TODO",
+      payload: {
+        ...formData,
+        id: nanoid(),
+      },
+    })
   }
 
   return (
@@ -202,7 +246,11 @@ export const App = () => {
             data-lpignore
           />
         </header>
-        <form id="new-todo-form" className={styles.newTodoForm}>
+        <form
+          id="new-todo-form"
+          className={styles.newTodoForm}
+          onSubmit={handleSubmit}
+        >
           <h3>{t("create a todo")}</h3>
           <label>
             <span className="caption">{t("whats on your todo list")}</span>
@@ -226,6 +274,14 @@ export const App = () => {
 
           <button type="submit">{t("add todo")}</button>
         </form>
+
+        <div>
+          {state.todos.map((todo) => (
+            <div key={todo.id}>
+              {todo.title} ({todo.category})
+            </div>
+          ))}
+        </div>
       </main>
 
       <pre>

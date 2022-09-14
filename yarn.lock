@@ -2532,6 +2532,7 @@ __metadata:
     css-loader: ^6.7.1
     html-webpack-plugin: ^5.5.0
     i18next: ^21.9.1
+    nanoid: 3.3.4
     react: ^18.2.0
     react-country-flag: ^3.0.2
     react-dom: ^18.2.0
@@ -3629,7 +3630,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.3.4":
+"nanoid@npm:3.3.4, nanoid@npm:^3.3.4":
   version: 3.3.4
   resolution: "nanoid@npm:3.3.4"
   bin:

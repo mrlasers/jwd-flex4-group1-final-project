@@ -43,6 +43,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["css-loader", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:6.7.1"],\
             ["html-webpack-plugin", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:5.5.0"],\
             ["i18next", "npm:21.9.1"],\
+            ["nanoid", "npm:3.3.4"],\
             ["react", "npm:18.2.0"],\
             ["react-country-flag", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:3.0.2"],\
             ["react-dom", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:18.2.0"],\
@@ -3081,6 +3082,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["css-loader", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:6.7.1"],\
             ["html-webpack-plugin", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:5.5.0"],\
             ["i18next", "npm:21.9.1"],\
+            ["nanoid", "npm:3.3.4"],\
             ["react", "npm:18.2.0"],\
             ["react-country-flag", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:3.0.2"],\
             ["react-dom", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:18.2.0"],\
