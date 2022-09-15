@@ -13,17 +13,24 @@ export const rootReducer: React.Reducer<AppState, Action> = (state, action) => {
     default:
       return state
     case "ADD_CATEGORY": {
+      console.log("adding category:", action.payload)
       const newCat = action.payload.trim()
+      const newId = nanoid()
+
       if (state.categories.find((cat) => cat.name === newCat)) {
         return state
       }
 
       return {
         ...state,
+        settings: {
+          ...state.settings,
+          defaultCategoryId: newId,
+        },
         categories: [
           ...state.categories,
           {
-            id: nanoid(),
+            id: newId,
             name: newCat,
           },
         ],

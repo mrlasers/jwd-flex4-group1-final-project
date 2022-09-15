@@ -1,8 +1,14 @@
 import { nanoid } from 'nanoid'
 import * as React from 'react'
 import { TFunction, useTranslation } from 'react-i18next'
+import { updateFor } from 'typescript'
 
-import { CategoryUpdate, Todo, TodoCategory } from '../types'
+import {
+  CategoryUpdate,
+  ReactChangeEventLike,
+  Todo,
+  TodoCategory,
+} from '../types'
 import { CategoryPicker, OverflowInput } from './'
 import styles from './NewTodoForm.module.scss'
 
@@ -52,7 +58,17 @@ export const NewTodoForm: React.FC<Props> = ({
   const { t } = useTranslation()
   const titleRef = React.useRef<HTMLInputElement>(null)
 
-  function updateFormData(e: React.ChangeEvent<HTMLInputElement>) {
+  React.useEffect(() => {
+    defaultCategoryId &&
+      updateFormData({
+        currentTarget: {
+          name: "category",
+          value: defaultCategoryId,
+        },
+      })
+  }, [defaultCategoryId])
+
+  function updateFormData(e: ReactChangeEventLike) {
     const { name, value } = e.currentTarget
 
     if (!name) {
@@ -78,6 +94,19 @@ export const NewTodoForm: React.FC<Props> = ({
     console.log("setFormData(emptyFormData)")
     setFormData(makeEmptyFormData(formData.category, categories))
     titleRef.current?.focus()
+  }
+
+  function handleUpdateCategory(action: CategoryUpdate) {
+    if (action.type === "ADD_CATEGORY") {
+      updateFormData({
+        currentTarget: {
+          name: "category",
+          value: action.payload,
+        },
+      })
+    }
+
+    onUpdateCategory(action)
   }
 
   return (
@@ -106,7 +135,7 @@ export const NewTodoForm: React.FC<Props> = ({
         name="category"
         selected={formData.category}
         onChange={updateFormData}
-        onUpdateCategory={onUpdateCategory}
+        onUpdateCategory={handleUpdateCategory}
       />
 
       <button type="submit">{t("add todo")}</button>

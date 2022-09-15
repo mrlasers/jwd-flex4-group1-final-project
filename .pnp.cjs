@@ -35,6 +35,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@emotion/css", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:11.10.0"],\
             ["@pmmmwh/react-refresh-webpack-plugin", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:0.5.7"],\
+            ["@types/jest", "npm:29.0.2"],\
             ["@types/node", "npm:18.7.16"],\
             ["@types/react", "npm:18.0.19"],\
             ["@types/react-dom", "npm:18.0.6"],\
@@ -1864,6 +1865,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/istanbul-reports", "npm:3.0.1"],\
             ["@types/istanbul-lib-report", "npm:3.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/jest", [\
+        ["npm:29.0.2", {\
+          "packageLocation": "./.yarn/cache/@types-jest-npm-29.0.2-633da80e03-27c46b58fa.zip/node_modules/@types/jest/",\
+          "packageDependencies": [\
+            ["@types/jest", "npm:29.0.2"],\
+            ["expect", "npm:29.0.3"],\
+            ["pretty-format", "npm:29.0.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4888,6 +4900,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["group-project-react-ts", "workspace:."],\
             ["@emotion/css", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:11.10.0"],\
             ["@pmmmwh/react-refresh-webpack-plugin", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:0.5.7"],\
+            ["@types/jest", "npm:29.0.2"],\
             ["@types/node", "npm:18.7.16"],\
             ["@types/react", "npm:18.0.19"],\
             ["@types/react-dom", "npm:18.0.6"],\
@@ -9053,7 +9066,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/babel-jest", null],\
             ["@types/babel__core", null],\
             ["@types/esbuild", null],\
-            ["@types/jest", null],\
+            ["@types/jest", "npm:29.0.2"],\
             ["@types/jest__types", null],\
             ["@types/typescript", null],\
             ["babel-jest", null],\

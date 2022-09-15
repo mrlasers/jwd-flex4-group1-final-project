@@ -34,6 +34,7 @@ function configureI18N(language: string) {
           other: "other",
           "todo list": "Todo list",
           "add todo": "Add todo",
+          "too narrow message": "too narrow",
         },
       },
       es: {
@@ -98,14 +99,10 @@ export const App = () => {
   )
 
   React.useEffect(() => {
-    // console.log("statestate", JSON.stringify(state, null, 2))
-
     localStorage.setItem("tasks-app", JSON.stringify(state))
   }, [state])
 
   const { t, i18n } = useTranslation()
-
-  // const [formData, setFormData] = React.useState<FormData>(emptyFormData)
 
   function changeLanguage(lang: "en" | "es") {
     i18n.changeLanguage(lang)
@@ -113,88 +110,99 @@ export const App = () => {
     dispatch({ type: "UPDATE_LANGUAGE", payload: lang })
   }
 
-  // React.useEffect(() => {}, [formData])
-
   return (
-    <div className={styles.container}>
-      <Helmet>
-        <title>
-          {state.user?.username
-            ? `${state.user.username}'s Tasks`
-            : "Your Tasks"}
-        </title>
-      </Helmet>
-      <header className={styles.header}>
-        <div style={{ display: "flex", gap: "1em" }}>
-          <ThemeToggle value={darkTheme} onChange={setDarkTheme} />
-          <LanguageSelector
-            selectedLanguage={i18n.language}
-            languages={[
-              {
-                countryCode: "US",
-                languageCode: "en",
-              },
-              { countryCode: "ES", languageCode: "es" },
-            ]}
-            onChange={changeLanguage}
-          />
-        </div>
+    <>
+      <div className={styles.container}>
+        <Helmet>
+          <title>
+            {state.user?.username
+              ? `${state.user.username}'s Tasks`
+              : "Your Tasks"}
+          </title>
+        </Helmet>
+        <header className={styles.header}>
+          <div style={{ display: "flex", gap: "1em" }}>
+            <ThemeToggle value={darkTheme} onChange={setDarkTheme} />
+            <LanguageSelector
+              selectedLanguage={i18n.language}
+              languages={[
+                {
+                  countryCode: "US",
+                  languageCode: "en",
+                },
+                { countryCode: "ES", languageCode: "es" },
+              ]}
+              onChange={changeLanguage}
+            />
+          </div>
 
-        <nav>
-          <a
-            href="https://github.com/mrlasers/jwd-flex4-group1-final-project"
-            target="_blank"
-          >
-            View on Github
-          </a>
-        </nav>
-      </header>
-
-      <main>
-        <header className={styles.formGreeting}>
-          <div className="greeting">{t("hello")}, </div>
-          <input
-            type="text"
-            placeholder={t("name here")}
-            name="username"
-            id="username"
-            value={state.user.username || ""}
-            onChange={(e) =>
-              dispatch({
-                type: "UPDATE_USERNAME",
-                payload: e.currentTarget.value,
-              })
-            }
-            data-lpignore
-          />
+          <nav>
+            <a
+              href="https://github.com/mrlasers/jwd-flex4-group1-final-project"
+              target="_blank"
+            >
+              View on Github
+            </a>
+          </nav>
         </header>
 
-        <NewTodoForm
-          categories={state.categories}
-          defaultCategoryId={state.settings?.defaultCategoryId}
-          onSubmit={(todo) =>
-            dispatch({
-              type: "ADD_TODO",
-              payload: todo,
-            })
-          }
-          onUpdateCategory={console.log}
-        />
+        <main>
+          <header className={styles.formGreeting}>
+            <div className="greeting">{t("hello")}, </div>
+            <input
+              type="text"
+              placeholder={t("name here")}
+              name="username"
+              id="username"
+              value={state.user.username || ""}
+              onChange={(e) =>
+                dispatch({
+                  type: "UPDATE_USERNAME",
+                  payload: e.currentTarget.value,
+                })
+              }
+              data-lpignore
+            />
+          </header>
 
-        <TaskCardList
-          todos={state.todos}
-          onChange={(todo) => dispatch({ type: "UPDATE_TODO", payload: todo })}
-          onDelete={(todo) => dispatch({ type: "DELETE_TODO", payload: todo })}
-        />
-      </main>
+          <NewTodoForm
+            categories={state.categories}
+            defaultCategoryId={state.settings?.defaultCategoryId}
+            onSubmit={(todo) =>
+              dispatch({
+                type: "ADD_TODO",
+                payload: todo,
+              })
+            }
+            onUpdateCategory={dispatch}
+          />
 
-      <pre>
-        <code>{JSON.stringify(state, null, 2)}</code>
-      </pre>
+          <TaskCardList
+            todos={state.todos}
+            onChange={(todo) =>
+              dispatch({ type: "UPDATE_TODO", payload: todo })
+            }
+            onDelete={(todo) =>
+              dispatch({ type: "DELETE_TODO", payload: todo })
+            }
+          />
+        </main>
 
-      <footer>
-        <div>“Don't be a narc.” –Tylor Durden</div>
-      </footer>
-    </div>
+        <pre>
+          <code>{JSON.stringify(state, null, 2)}</code>
+        </pre>
+
+        <footer>
+          <div>“Don't be a narc.” –Tylor Durden</div>
+        </footer>
+      </div>
+      <div className={styles.tooNarrow}>
+        {t(`too narrow message`)
+          .split("")
+          .map((c, idx) => (
+            <span key={idx}>{!c.trim() ? "\u00a0" : c}</span>
+          ))}
+      </div>
+    </>
   )
 }

@@ -1,39 +1,5 @@
 @use "./styles/reset.scss";
-
-:root {
-  --brand-color-rgb: 225 6 0;
-  --brand-color: rgb(var(--brand-color-rgb));
-
-  --primary-color: dodgerblue;
-  --secondary-color: orangered;
-  --dark-color: black;
-  --grey-color: darkslategrey;
-  --light-color: #eee;
-
-  --fg-color: var(--dark-color);
-  --bg-color: var(--light-color);
-
-  --box-shadow: 0 1px 3px rgba(var(--dark-color) / 0.1);
-
-  --bottom-color-bg: #eee;
-  --bottom-color-fg: black;
-
-  --middle-color-bg: white;
-  --middle-color-fg: darkslategrey;
-
-  --top-color-bg: var(--brand-color);
-  --top-color-fg: white;
-  --top-color-hover: rgba(var(--brand-color-rgb) / 0.5);
-
-  --bg-color: var(--bottom-color-bg);
-  --fg-color: var(--bottom-color-fg);
-
-  --bubble-color: var(--bottom-color-fg);
-  // --bubble-border-color: var(--bubble-color);
-
-  --tile-border-radius: 0.5rem;
-  --button-border-radius: 0.25em;
-}
+@use "./styles/colors.scss";
 
 .container {
   background-color: var(--bg-color);
@@ -125,5 +91,31 @@
 
   input {
     flex: 1;
+  }
+}
+
+.tooNarrow {
+  display: none;
+}
+
+@media only screen and (max-width: 200px) {
+  .container {
+    display: none;
+  }
+  .tooNarrow {
+    display: grid;
+    place-content: center;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: yellowgreen;
+    color: white;
+    font-weight: 900;
+    // font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    text-transform: uppercase;
+
+    span {
+      display: block;
+      text-align: center;
+    }
   }
 }

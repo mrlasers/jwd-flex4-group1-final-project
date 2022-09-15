@@ -60,3 +60,10 @@ export type ReplaceCategories = {
   type: "REPLACE_CATEGORIES"
   payload: TodoCategory[]
 }
+
+export type ReactChangeEventLike = {
+  currentTarget: {
+    name: string
+    value: string
+  }
+}
