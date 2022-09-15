@@ -1,5 +1,8 @@
 .taskCardList {
-  --bubble-color: var(--secondary-color);
+  --bubble-color: var(--top-color-bg);
+
+  border-radius: var(--tile-border-radius);
+  overflow: hidden;
 
   list-style-type: none;
   margin: 0;
@@ -14,30 +17,45 @@
   }
 
   li {
+    display: flex;
+    flex-direction: column;
     background-color: var(--middle-color-bg);
     color: var(--middle-color-fg);
-    display: flex;
-    align-items: center;
-    gap: 1em;
-    width: 100%;
-
-    padding: 1rem;
-
-    div {
-      flex: 1;
-      word-break: break-all;
-    }
-
-    button {
-      display: grid;
-      place-content: center;
-      padding: 0.25em;
-    }
 
     &:hover {
-      background-color: var(--top-color-bg);
+      background-color: var(--top-color-hover);
       color: var(--top-color-fg);
       --bubble-color: white;
+    }
+
+    hr {
+      width: 90%;
+      align-self: center;
+      color: rgba(0 0 0 / 0.25);
+    }
+
+    &:last-of-type hr {
+      display: none;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      width: 100%;
+
+      padding: 1rem;
+
+      div[class~="title"] {
+        flex: 1;
+        word-break: break-all;
+      }
+
+      button {
+        display: grid;
+        place-content: center;
+        padding: 0.25em;
+      }
     }
   }
 }

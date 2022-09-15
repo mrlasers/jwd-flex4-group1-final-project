@@ -10,6 +10,7 @@ import styles from './app.module.scss'
 import {
   CategoryPicker,
   LanguageSelector,
+  NewTodoForm,
   OverflowInput,
   TaskCardList,
   ThemeToggle,
@@ -17,72 +18,46 @@ import {
 import { rootReducer } from './store'
 import { Action, AppState, Todo, TodoCategory, UpdateCategory } from './types'
 
-i18n.use(initReactI18next).init({
-  resources: {
-    en: {
-      translation: {
-        hello: "Hello",
-        "name here": "name here",
-        "create a todo": "Create a todo",
-        "whats on your todo list": `What's on your todo list?`,
-        "e.g.": "e.g.",
-        "take a nap": "take a nap",
-        "pick a category": "Pick a category",
-        work: "work",
-        other: "other",
-        "todo list": "Todo list",
-        "add todo": "Add todo",
-      },
-    },
-    es: {
-      translation: {
-        hello: "Saludos",
-        "name here": "nombre aquí",
-        "create a todo": "Crear tarea",
-        "whats on your todo list": `Que hay en su lista de tareas?`,
-        "e.g.": "p.ej.",
-        "take a nap": "tome una siesta",
-        "pick a category": "Escoge una categoría",
-        work: "trabajo",
-        other: "otro",
-        "todo list": "Lista de tareas",
-        // 'add todo': 'Add todo'
-      },
-    },
-  },
-  lng: "es",
-  fallbackLng: "es",
-  interpolation: {
-    escapeValue: false,
-  },
-})
-
-const categoryReducer: React.Reducer<TodoCategory[], Action> = (
-  state,
-  action
-) => {
-  switch (action.type) {
-    default:
-      return state
-    case "ADD_CATEGORY": {
-      const newCat = action.payload.trim()
-      if (state.find((cat) => cat.name === newCat)) {
-        return state
-      }
-
-      return [
-        ...state,
-        {
-          id: nanoid(),
-          name: newCat,
+function configureI18N(language: string) {
+  return i18n.use(initReactI18next).init({
+    resources: {
+      en: {
+        translation: {
+          hello: "Hello",
+          "name here": "name here",
+          "create a todo": "Create a todo",
+          "whats on your todo list": `What's on your todo list?`,
+          "e.g.": "e.g.",
+          "take a nap": "take a nap",
+          "pick a category": "Pick a category",
+          work: "work",
+          other: "other",
+          "todo list": "Todo list",
+          "add todo": "Add todo",
         },
-      ]
-    }
-    case "REPLACE_CATEGORIES": {
-      console.log("replacing categories with", action.payload)
-      return action.payload
-    }
-  }
+      },
+      es: {
+        translation: {
+          hello: "Saludos",
+          "name here": "nombre aquí",
+          "create a todo": "Crear tarea",
+          "whats on your todo list": `Que hay en su lista de tareas?`,
+          "e.g.": "p.ej.",
+          "take a nap": "tome una siesta",
+          "pick a category": "Escoge una categoría",
+          work: "trabajo",
+          other: "otro",
+          "todo list": "Lista de tareas",
+          // 'add todo': 'Add todo'
+        },
+      },
+    },
+    lng: language,
+    fallbackLng: "en",
+    interpolation: {
+      escapeValue: false,
+    },
+  })
 }
 
 const savedState = localStorage.getItem("tasks-app")
@@ -90,6 +65,7 @@ const savedState = localStorage.getItem("tasks-app")
 const initialState: AppState = savedState
   ? JSON.parse(savedState)
   : {
+      user: {},
       todos: [],
       categories: [
         {
@@ -105,15 +81,13 @@ const initialState: AppState = savedState
           name: "Other",
         },
       ],
+      settings: {
+        language: "en",
+        defaultCategoryId: "work",
+      },
     }
 
-type FormData = Omit<Todo, "id">
-
-const emptyFormData: FormData = {
-  title: "",
-  category: "other",
-  done: false,
-}
+configureI18N(initialState?.settings?.language || "en")
 
 export const App = () => {
   const [username, setUsername] = React.useState<string>("")
@@ -131,43 +105,24 @@ export const App = () => {
 
   const { t, i18n } = useTranslation()
 
-  const [formData, setFormData] = React.useState<FormData>(emptyFormData)
-
-  function updateFormData(e: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value } = e.currentTarget
-
-    if (!name) {
-      throw new Error(`You need to set a name on form elements, brud!`)
-    }
-
-    setFormData({
-      ...formData,
-      [name]: value,
-    })
-  }
+  // const [formData, setFormData] = React.useState<FormData>(emptyFormData)
 
   function changeLanguage(lang: "en" | "es") {
     i18n.changeLanguage(lang)
+
+    dispatch({ type: "UPDATE_LANGUAGE", payload: lang })
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-
-    console.log(formData)
-
-    dispatch({
-      type: "ADD_TODO",
-      payload: {
-        ...formData,
-        id: nanoid(),
-      },
-    })
-  }
+  // React.useEffect(() => {}, [formData])
 
   return (
     <div className={styles.container}>
       <Helmet>
-        <title>{username.length ? `${username}'s Tasks` : "Your Tasks"}</title>
+        <title>
+          {state.user?.username
+            ? `${state.user.username}'s Tasks`
+            : "Your Tasks"}
+        </title>
       </Helmet>
       <header className={styles.header}>
         <div style={{ display: "flex", gap: "1em" }}>
@@ -203,39 +158,28 @@ export const App = () => {
             placeholder={t("name here")}
             name="username"
             id="username"
-            value={username}
-            onChange={(e) => setUsername(e.currentTarget.value)}
+            value={state.user.username || ""}
+            onChange={(e) =>
+              dispatch({
+                type: "UPDATE_USERNAME",
+                payload: e.currentTarget.value,
+              })
+            }
             data-lpignore
           />
         </header>
-        <form
-          id="new-todo-form"
-          className={styles.newTodoForm}
-          onSubmit={handleSubmit}
-        >
-          <h3>{t("create a todo")}</h3>
-          <label>
-            <span className="caption">{t("whats on your todo list")}</span>
-            <OverflowInput
-              placeholder={t("e.g.") + ", " + t("take a nap")}
-              name="title"
-              data-lpignore
-              required
-              onChange={updateFormData}
-            />
-          </label>
 
-          <CategoryPicker
-            title={t("pick a category")}
-            categories={state.categories}
-            name="category"
-            selected={formData.category}
-            onChange={updateFormData}
-            updateCategories={dispatch}
-          />
-
-          <button type="submit">{t("add todo")}</button>
-        </form>
+        <NewTodoForm
+          categories={state.categories}
+          defaultCategoryId={state.settings?.defaultCategoryId}
+          onSubmit={(todo) =>
+            dispatch({
+              type: "ADD_TODO",
+              payload: todo,
+            })
+          }
+          onUpdateCategory={console.log}
+        />
 
         <TaskCardList
           todos={state.todos}
@@ -243,10 +187,6 @@ export const App = () => {
           onDelete={(todo) => dispatch({ type: "DELETE_TODO", payload: todo })}
         />
       </main>
-
-      <pre>
-        <code>{JSON.stringify(formData, null, 2)}</code>
-      </pre>
 
       <pre>
         <code>{JSON.stringify(state, null, 2)}</code>

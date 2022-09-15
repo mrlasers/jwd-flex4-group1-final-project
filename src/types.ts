@@ -1,6 +1,13 @@
 export type AppState = {
   todos: Todo[]
   categories: TodoCategory[]
+  user: {
+    username?: string
+  }
+  settings: {
+    language: string
+    defaultCategoryId: string
+  }
 }
 
 export type TodoCategory = {
@@ -32,7 +39,22 @@ export type TodoAction = {
   payload: Todo
 }
 
-export type Action = TodoAction | CategoryUpdate | ReplaceCategories
+type UpdateUser = {
+  type: "UPDATE_USERNAME"
+  payload: string
+}
+
+type UpdateSettings = {
+  type: "UPDATE_LANGUAGE"
+  payload: string
+}
+
+export type Action =
+  | TodoAction
+  | CategoryUpdate
+  | ReplaceCategories
+  | UpdateSettings
+  | UpdateUser
 
 export type ReplaceCategories = {
   type: "REPLACE_CATEGORIES"

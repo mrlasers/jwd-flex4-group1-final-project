@@ -1,6 +1,9 @@
 @use "./styles/reset.scss";
 
 :root {
+  --brand-color-rgb: 225 6 0;
+  --brand-color: rgb(var(--brand-color-rgb));
+
   --primary-color: dodgerblue;
   --secondary-color: orangered;
   --dark-color: black;
@@ -18,13 +21,15 @@
   --middle-color-bg: white;
   --middle-color-fg: darkslategrey;
 
-  --top-color-bg: #e10600;
+  --top-color-bg: var(--brand-color);
   --top-color-fg: white;
+  --top-color-hover: rgba(var(--brand-color-rgb) / 0.5);
 
   --bg-color: var(--bottom-color-bg);
   --fg-color: var(--bottom-color-fg);
 
-  --bubble-color: purple;
+  --bubble-color: var(--bottom-color-fg);
+  // --bubble-border-color: var(--bubble-color);
 
   --tile-border-radius: 0.5rem;
   --button-border-radius: 0.25em;
@@ -120,48 +125,5 @@
 
   input {
     flex: 1;
-  }
-}
-
-.newTodoForm {
-  // background-color: red;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  h3 {
-    font-weight: normal;
-  }
-
-  label {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-
-    input {
-      // display: block;
-      background-color: var(--middle-color-bg);
-      color: var(--middle-color-fg);
-      border-radius: var(--tile-border-radius);
-      // padding: 1rem 1.5rem;
-      padding: calc(var(--tile-border-radius) * 2)
-        calc(var(--tile-border-radius) * 3);
-      font-size: 1.125rem;
-
-      box-shadow: var(--box-shadow);
-    }
-  }
-
-  > button {
-    background-color: black;
-    color: white;
-
-    text-transform: uppercase;
-
-    border: 0;
-    border-radius: 0.5rem;
-    box-shadow: var(--box-shadow);
-
-    padding: 1em;
   }
 }

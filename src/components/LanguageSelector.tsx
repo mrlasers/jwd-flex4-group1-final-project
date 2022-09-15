@@ -7,7 +7,7 @@ type SupportedLanguages = "en" | "es"
 
 type Props = {
   selectedLanguage: string
-  languages: {
+  languages?: {
     countryCode: string
     languageCode: SupportedLanguages
   }[]
@@ -21,17 +21,15 @@ export const LanguageSelector: React.FC<Props> = ({
 }) => {
   return (
     <div className={styles.langSelector}>
-      <span>
-        <Flag
-          className={selectedLanguage === "en" ? "" : "selected"}
-          countryCode="US"
-          style={{ fontSize: "2em", lineHeight: "2em" }}
-          svg={true}
-          onClick={() => onChange("en")}
-        />
-      </span>
       <Flag
-        className={selectedLanguage === "es" ? "" : "selected"}
+        className={selectedLanguage === "en" ? "selected" : ""}
+        countryCode="US"
+        style={{ fontSize: "2em", lineHeight: "2em" }}
+        svg={true}
+        onClick={() => onChange("en")}
+      />
+      <Flag
+        className={selectedLanguage === "es" ? "selected" : ""}
         countryCode="ES"
         style={{ fontSize: "2em", lineHeight: "2em" }}
         svg={true}

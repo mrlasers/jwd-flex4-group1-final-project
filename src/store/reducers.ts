@@ -45,6 +45,10 @@ export const rootReducer: React.Reducer<AppState, Action> = (state, action) => {
       return {
         ...state,
         todos: [...state.todos, action.payload],
+        settings: {
+          ...state.settings,
+          defaultCategoryId: action.payload.category,
+        },
       }
     }
     case "UPDATE_TODO": {
@@ -61,6 +65,25 @@ export const rootReducer: React.Reducer<AppState, Action> = (state, action) => {
       return {
         ...state,
         todos: state.todos.filter((todo) => todo.id !== action.payload.id),
+      }
+    }
+    case "UPDATE_LANGUAGE": {
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+
+          language: action.payload,
+        },
+      }
+    }
+    case "UPDATE_USERNAME": {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          username: action.payload,
+        },
       }
     }
   }

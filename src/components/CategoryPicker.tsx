@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { VscAdd, VscClose, VscEdit, VscSave, VscTrash } from 'react-icons/vsc'
 
-import styles from '../styles/components.module.scss'
 import { CategoryUpdate, TodoCategory, UpdateCategory } from '../types'
 import { Bubble } from './Bubble'
+import styles from './CategoryPicker.module.scss'
 
 type Props = {
   title: string
@@ -11,7 +11,7 @@ type Props = {
   categories: TodoCategory[]
   selected: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  updateCategories: (action: CategoryUpdate) => void
+  onUpdateCategory: (action: CategoryUpdate) => void
 }
 
 export const CategoryPicker: React.FC<Props> = ({
@@ -20,7 +20,7 @@ export const CategoryPicker: React.FC<Props> = ({
   name,
   selected,
   onChange,
-  updateCategories,
+  onUpdateCategory,
 }) => {
   const newCatRef = React.useRef<HTMLInputElement>(null)
   const [selCat, setSelCat] = React.useState<string>(selected)
@@ -34,7 +34,7 @@ export const CategoryPicker: React.FC<Props> = ({
   }, [selected, showEdit])
 
   function handleNewCategory() {
-    updateCategories({
+    onUpdateCategory({
       type: "ADD_CATEGORY",
       payload: newCategory,
     })
@@ -102,7 +102,7 @@ export const CategoryPicker: React.FC<Props> = ({
                 type="text"
                 defaultValue={category.name}
                 onChange={(e) => {
-                  updateCategories({
+                  onUpdateCategory({
                     type: "UPDATE_CATEGORY",
                     payload: {
                       ...category,

@@ -26,11 +26,14 @@ export const TaskCard: React.FC<CardProps> = ({ todo, onChange, onDelete }) => {
         onChange({ ...todo, done: !todo.done })
       }}
     >
-      <Bubble filled={todo.done} />
-      <div>{todo.title}</div>
-      <button type="button" onClick={() => onDelete(todo)}>
-        <VscTrash />
-      </button>
+      <div>
+        <Bubble filled={todo.done} />
+        <div className="title">{todo.title}</div>
+        <button type="button" onClick={() => onDelete(todo)}>
+          <VscTrash />
+        </button>
+      </div>
+      <hr />
     </li>
   )
 }

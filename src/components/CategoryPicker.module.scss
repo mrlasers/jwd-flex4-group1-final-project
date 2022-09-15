@@ -1,0 +1,135 @@
+.addCategory {
+  display: flex;
+  justify-content: space-between;
+  gap: 1ch;
+  align-items: center;
+  // background-color: green;
+  width: 100%;
+
+  div {
+    display: flex;
+    justify-content: flex-end;
+    // display: grid;
+    // grid-template-columns: 100fr 1fr 1fr;
+    gap: 1ch;
+    flex: 1;
+    // background-color: red;
+
+    input {
+      flex: 1;
+      background-color: var(--middle-color-bg);
+      color: var(--middle-color-fg);
+    }
+  }
+
+  button[class~="default"] {
+    color: var(--primary-color);
+  }
+}
+
+.radioSet {
+  border: 0;
+  display: flex;
+  display: grid;
+  grid-template-columns: subgrid;
+  flex-direction: column;
+  // gap: 1rem;
+
+  legend {
+    // display: flex;
+    // gap: 1ch;
+    // align-items: center;
+    margin-bottom: 0.5rem;
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--button-border-radius);
+      // border: 2px solid coral;
+      border: 0;
+      border-radius: var(--button-border-radius);
+      background-color: rgba(0 0 0 / 0.2);
+      color: white;
+
+      &:hover {
+        background-color: rgba(0 0 0 / 0.1);
+        color: var(--primary-color);
+      }
+
+      svg {
+        height: 100%;
+        width: 100%;
+        // border: 2px solid yellowgreen;
+      }
+    }
+  }
+
+  label {
+    display: grid;
+    gap: 1ch;
+    grid-template-columns: 0fr 1fr;
+
+    align-items: center;
+    padding: 1.5rem;
+
+    padding: clamp(0.5rem, 5vw, 1.5rem);
+    background-color: var(--middle-color-bg);
+    color: var(--middle-color-fg);
+
+    &:first-of-type {
+      border-radius: var(--tile-border-radius) var(--tile-border-radius) 0 0;
+    }
+
+    &:last-of-type {
+      border-radius: 0 0 var(--tile-border-radius) var(--tile-border-radius);
+    }
+
+    flex: 1;
+    cursor: pointer;
+
+    box-shadow: var(--box-shadow);
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="text"],
+    span {
+      text-align: center;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+      appearance: none;
+      font-size: 1.125rem;
+      background-color: inherit;
+      color: inherit;
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .radioSet {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
+    label {
+      display: flex;
+      flex-direction: column;
+
+      &,
+      &:first-of-type,
+      &:last-of-type {
+        border-radius: var(--tile-border-radius);
+      }
+
+      input {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+}
