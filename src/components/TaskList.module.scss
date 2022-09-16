@@ -59,3 +59,17 @@
     }
   }
 }
+
+.taskListControls {
+  display: flex;
+  gap: 1ch;
+
+  button {
+    padding: 0.5em;
+    min-width: 10ch;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}

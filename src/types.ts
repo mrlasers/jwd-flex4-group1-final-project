@@ -4,6 +4,9 @@ export type AppState = {
   user: {
     username?: string
   }
+  view: {
+    filter: "all" | "incomplete" | "complete"
+  }
   settings: {
     language: string
     defaultCategoryId: string
@@ -49,12 +52,15 @@ type UpdateSettings = {
   payload: string
 }
 
+type Msg<T extends string, P> = { type: T; payload: P }
+
 export type Action =
   | TodoAction
   | CategoryUpdate
   | ReplaceCategories
   | UpdateSettings
   | UpdateUser
+  | Msg<"SET_FILTER", string>
 
 export type ReplaceCategories = {
   type: "REPLACE_CATEGORIES"

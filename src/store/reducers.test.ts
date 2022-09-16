@@ -7,6 +7,7 @@ const initialState: AppState = {
     language: "en",
     defaultCategoryId: "",
   },
+  view: { filter: "all" },
   todos: [
     {
       id: "bigtodo",

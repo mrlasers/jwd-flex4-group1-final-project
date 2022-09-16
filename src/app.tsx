@@ -1,18 +1,15 @@
 import i18n from 'i18next'
-import { nanoid } from 'nanoid'
 import * as React from 'react'
-import Flag from 'react-country-flag'
 import { Helmet } from 'react-helmet-async'
 import { initReactI18next, useTranslation } from 'react-i18next'
-import { VscAdd, VscEdit } from 'react-icons/vsc'
 
 import styles from './app.module.scss'
 import {
-  CategoryPicker,
+  Input,
   LanguageSelector,
   NewTodoForm,
-  OverflowInput,
   TaskCardList,
+  TaskListControls,
   ThemeToggle,
 } from './components'
 import { rootReducer } from './store'
@@ -63,39 +60,61 @@ function configureI18N(language: string) {
 
 const savedState = localStorage.getItem("tasks-app")
 
-const initialState: AppState = savedState
-  ? JSON.parse(savedState)
-  : {
-      user: {},
-      todos: [],
-      categories: [
-        {
-          id: "work",
-          name: "Work",
-        },
-        {
-          id: "fun",
-          name: "Fun",
-        },
-        {
-          id: "other",
-          name: "Other",
-        },
-      ],
-      settings: {
-        language: "en",
-        defaultCategoryId: "work",
-      },
-    }
+const defaultState: AppState = {
+  user: {},
+  todos: [],
+  categories: [
+    {
+      id: "work",
+      name: "Work",
+    },
+    {
+      id: "fun",
+      name: "Fun",
+    },
+    {
+      id: "other",
+      name: "Other",
+    },
+  ],
+  view: {
+    filter: "all",
+  },
+  settings: {
+    language: "en",
+    defaultCategoryId: "work",
+  },
+}
+
+const initialState: AppState = {
+  ...defaultState,
+  ...(savedState ? JSON.parse(savedState) : {}),
+}
 
 configureI18N(initialState?.settings?.language || "en")
 
 export const App = () => {
+  // hooks
   const [username, setUsername] = React.useState<string>("")
   const [darkTheme, setDarkTheme] = React.useState<boolean>(false)
   const [state, dispatch] = React.useReducer<typeof rootReducer>(
     rootReducer,
     initialState
+  )
+
+  const filteredTodos = React.useMemo<Todo[]>(
+    () =>
+      state.todos.filter((todo) => {
+        switch (state.view.filter) {
+          default:
+            return true
+          case "incomplete":
+            return !todo.done
+          case "complete":
+            return todo.done
+        }
+      }),
+    [state.todos, state.view.filter]
   )
 
   React.useEffect(() => {
@@ -104,12 +123,15 @@ export const App = () => {
 
   const { t, i18n } = useTranslation()
 
+  // helpers
+
   function changeLanguage(lang: "en" | "es") {
     i18n.changeLanguage(lang)
 
     dispatch({ type: "UPDATE_LANGUAGE", payload: lang })
   }
 
+  // magic
   return (
     <>
       <div className={styles.container}>
@@ -149,7 +171,7 @@ export const App = () => {
         <main>
           <header className={styles.formGreeting}>
             <div className="greeting">{t("hello")}, </div>
-            <input
+            <Input
               type="text"
               placeholder={t("name here")}
               name="username"
@@ -161,7 +183,7 @@ export const App = () => {
                   payload: e.currentTarget.value,
                 })
               }
-              data-lpignore
+              lpignore={true}
             />
           </header>
 
@@ -177,8 +199,23 @@ export const App = () => {
             onUpdateCategory={dispatch}
           />
 
+          <TaskListControls
+            filters={["all", "incomplete", "complete"]}
+            onClick={(msg) => {
+              switch (msg.type) {
+                default:
+                  return
+                case "filter": {
+                  dispatch({
+                    type: "SET_FILTER",
+                    payload: msg.value,
+                  })
+                }
+              }
+            }}
+          />
           <TaskCardList
-            todos={state.todos}
+            todos={filteredTodos}
             onChange={(todo) =>
               dispatch({ type: "UPDATE_TODO", payload: todo })
             }

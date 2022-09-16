@@ -93,5 +93,15 @@ export const rootReducer: React.Reducer<AppState, Action> = (state, action) => {
         },
       }
     }
+
+    case "SET_FILTER": {
+      return {
+        ...state,
+        view: {
+          ...state.view,
+          filter: action.payload,
+        },
+      }
+    }
   }
 }

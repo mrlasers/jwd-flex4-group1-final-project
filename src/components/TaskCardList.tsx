@@ -3,7 +3,7 @@ import { VscTrash } from 'react-icons/vsc'
 
 import { Todo } from '../types'
 import { Bubble } from './Bubble'
-import styles from './TaskCard.module.scss'
+import styles from './TaskList.module.scss'
 
 type CardProps = {
   // key?: React.Key | null | undefined

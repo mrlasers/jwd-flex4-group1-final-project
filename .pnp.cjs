@@ -36,7 +36,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/css", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:11.10.0"],\
             ["@pmmmwh/react-refresh-webpack-plugin", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:0.5.7"],\
             ["@types/jest", "npm:29.0.2"],\
-            ["@types/node", "npm:18.7.16"],\
+            ["@types/node", "npm:18.7.18"],\
             ["@types/react", "npm:18.0.19"],\
             ["@types/react-dom", "npm:18.0.6"],\
             ["@types/webpack", "npm:5.28.0"],\
@@ -1922,6 +1922,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-node-npm-18.7.16-f7271d701b-01a3d35c76.zip/node_modules/@types/node/",\
           "packageDependencies": [\
             ["@types/node", "npm:18.7.16"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:18.7.18", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-18.7.18-5bcc3f839f-8aec61f0f9.zip/node_modules/@types/node/",\
+          "packageDependencies": [\
+            ["@types/node", "npm:18.7.18"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4901,7 +4908,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/css", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:11.10.0"],\
             ["@pmmmwh/react-refresh-webpack-plugin", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:0.5.7"],\
             ["@types/jest", "npm:29.0.2"],\
-            ["@types/node", "npm:18.7.16"],\
+            ["@types/node", "npm:18.7.18"],\
             ["@types/react", "npm:18.0.19"],\
             ["@types/react-dom", "npm:18.0.6"],\
             ["@types/webpack", "npm:5.28.0"],\
@@ -9148,7 +9155,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tsconfig/node12", "npm:1.0.11"],\
             ["@tsconfig/node14", "npm:1.0.3"],\
             ["@tsconfig/node16", "npm:1.0.3"],\
-            ["@types/node", "npm:18.7.16"],\
+            ["@types/node", "npm:18.7.18"],\
             ["@types/swc__core", null],\
             ["@types/swc__wasm", null],\
             ["@types/typescript", null],\
