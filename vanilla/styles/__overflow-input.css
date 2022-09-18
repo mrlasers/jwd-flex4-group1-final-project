@@ -1,0 +1,7 @@
+.overflow-input {
+  text-overflow: ellipsis;
+}
+
+.overflow-input:focus {
+  text-overflow: clip;
+}

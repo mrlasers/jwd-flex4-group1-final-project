@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { VscTrash } from 'react-icons/vsc'
 
-import { Todo } from '../types'
-import { Bubble } from './Bubble'
+import { Todo } from '../../types'
+import { Bubble } from '../Bubble'
 import styles from './TaskList.module.scss'
 
 type CardProps = {

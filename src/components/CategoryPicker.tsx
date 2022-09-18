@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from "react"
 import {
   VscAdd,
   VscClose,
@@ -6,16 +6,16 @@ import {
   VscSave,
   VscTrash,
   VscTriangleDown,
-} from 'react-icons/vsc'
+} from "react-icons/vsc"
 
 import {
   CategoryUpdate,
   ReactChangeEventLike,
   TodoCategory,
   UpdateCategory,
-} from '../types'
-import { Bubble } from './Bubble'
-import styles from './CategoryPicker.module.scss'
+} from "../types"
+import { Bubble } from "./Bubble"
+import styles from "./CategoryPicker.module.scss"
 
 type Props = {
   title: string

@@ -60,7 +60,7 @@ export type Action =
   | ReplaceCategories
   | UpdateSettings
   | UpdateUser
-  | Msg<"SET_FILTER", string>
+  | Msg<"SET_FILTER", "all" | "incomplete" | "complete" | string>
 
 export type ReplaceCategories = {
   type: "REPLACE_CATEGORIES"

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Tasks</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"
+    />
+    <script src="./scripts/app.js" type="module"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div style="display: flex; gap: 1em">
+          <button>Your code goes here</button>
+          <div class="language-selector">
+            <i class="fi fi-us selected"></i>
+            <i class="fi fi-es"></i>
+          </div>
+        </div>
+        <nav>
+          <a
+            href="https://github.com/mrlasers/jwd-flex4-group1-final-project"
+            target="_blank"
+          >
+            View on Github
+          </a>
+        </nav>
+      </header>
+      <main>
+        <header class="formGreeting">
+          <div class="greeting">Hello,</div>
+
+          <input
+            type="text"
+            placeholder="your name here"
+            name="username"
+            id="username"
+            data-lpignore="true"
+          />
+        </header>
+        <!-- NewTodoForm.tsx -->
+        <form id="new-todo-form" class="new-todo-form">
+          <h3>Create a todo</h3>
+          <label class="form-input">
+            <span class="caption">What's on your todo list?</span>
+            <input
+              class="overflow-input"
+              type="text"
+              placeholder="OverflowInput"
+              data-lpignore="true"
+            />
+          </label>
+          <!-- CategoryPicker.tsx -->
+          <fieldset class="radioSet">
+            <legend class="addCategory">
+              Pick a category
+              <div>
+                <button id="category-edit-btn" type="button">
+                  <i class="vsc vsc-edit"></i>
+                  <i class="vsc vsc-close"></i>
+                </button>
+                <button type="button">
+                  <i class="vsc vsc-trash"></i>
+                </button>
+              </div>
+            </legend>
+            <div class="tile">
+              <div class="caption">
+                Work <i class="vsc vsc-triangle-down"></i>
+              </div>
+              <ul>
+                <li><b class="bubble"></b> Work</li>
+                <li><b class="bubble filled"></b> Fun</li>
+              </ul>
+              <div class="blanket"></div>
+            </div>
+          </fieldset>
+
+          <button type="submit">Add todo</button>
+        </form>
+        <!-- TaskCard/TaskCardList.tsx -->
+        <div id="TaskListControls">task list controls</div>
+        <div id="TaskCardList">task card list</div>
+      </main>
+      <footer>
+        <div>“Don’t be a narc.” –Tylor Durden</div>
+      </footer>
+    </div>
+  </body>
+</html>
+<!--
+
+  flag icons: https://github.com/lipis/flag-icons
+  vscode icons: https://github.com/microsoft/vscode-codicons
+
+-->

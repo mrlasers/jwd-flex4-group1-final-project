@@ -1,0 +1,40 @@
+.new-todo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.new-todo-form h3 {
+  font-weight: normal;
+}
+
+.new-todo-form > button {
+  background-color: black;
+  color: white;
+
+  text-transform: uppercase;
+
+  border: 0;
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
+
+  padding: 1em;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-input input[type="text"] {
+  background-color: var(--middle-color-bg);
+  color: var(--middle-color-fg);
+  border-radius: var(--tile-border-radius);
+
+  padding: calc(var(--tile-border-radius) * 2)
+    calc(var(--tile-border-radius) * 3);
+  font-size: 1.125rem;
+
+  box-shadow: var(--box-shadow);
+}

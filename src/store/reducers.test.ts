@@ -1,5 +1,5 @@
-import { AppState } from '../types'
-import { rootReducer } from './reducers'
+import { AppState } from "../types"
+import { rootReducer } from "./reducers"
 
 const initialState: AppState = {
   categories: [{ name: "work", id: "work" }],

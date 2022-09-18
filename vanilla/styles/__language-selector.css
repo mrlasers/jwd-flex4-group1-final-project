@@ -1,0 +1,20 @@
+.language-selector {
+  display: flex;
+  gap: 0.5em;
+  cursor: pointer;
+}
+
+.language-selector [class~="selected"] {
+  filter: saturate(100%);
+  opacity: 1;
+}
+
+.language-selector i {
+  display: block;
+  height: 2em;
+  line-height: 2em;
+  width: calc(1.5em * (4 / 3));
+  aspect-ratio: 4 / 3;
+  filter: saturate(0%);
+  opacity: 0.5;
+}

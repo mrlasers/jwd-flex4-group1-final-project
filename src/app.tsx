@@ -1,9 +1,9 @@
-import i18n from 'i18next'
-import * as React from 'react'
-import { Helmet } from 'react-helmet-async'
-import { initReactI18next, useTranslation } from 'react-i18next'
+import i18n from "i18next"
+import * as React from "react"
+import { Helmet } from "react-helmet-async"
+import { initReactI18next, useTranslation } from "react-i18next"
 
-import styles from './app.module.scss'
+import styles from "./app.module.scss"
 import {
   Input,
   LanguageSelector,
@@ -11,9 +11,9 @@ import {
   TaskCardList,
   TaskListControls,
   ThemeToggle,
-} from './components'
-import { rootReducer } from './store'
-import { Action, AppState, Todo, TodoCategory, UpdateCategory } from './types'
+} from "./components"
+import { rootReducer } from "./store"
+import { Action, AppState, Todo, TodoCategory, UpdateCategory } from "./types"
 
 function configureI18N(language: string) {
   return i18n.use(initReactI18next).init({
@@ -134,7 +134,7 @@ export const App = () => {
   // magic
   return (
     <>
-      <div className={styles.container}>
+      <section className={styles.container}>
         <Helmet>
           <title>
             {state.user?.username
@@ -230,9 +230,9 @@ export const App = () => {
         </pre>
 
         <footer>
-          <div>“Don't be a narc.” –Tylor Durden</div>
+          <div>“Don’t be a narc.” –Tylor Durden</div>
         </footer>
-      </div>
+      </section>
       <div className={styles.tooNarrow}>
         {t(`too narrow message`)
           .split("")
