@@ -1,15 +1,18 @@
-import 'webpack-dev-server'
+import "webpack-dev-server"
 
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import Path from 'path'
-import ReactRefreshTypeScript from 'react-refresh-typescript'
-import { Configuration } from 'webpack'
-import { merge } from 'webpack-merge'
+import HtmlWebpackPlugin from "html-webpack-plugin"
+import Path from "path"
+import ReactRefreshTypeScript from "react-refresh-typescript"
+import { Configuration } from "webpack"
+import { merge } from "webpack-merge"
 
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin"
 
 const commonConfig: Configuration = {
-  entry: "./src/index.tsx",
+  entry: {
+    react: "./src/react/index.tsx",
+    vanilla: "./src/vanilla/scripts/app.ts",
+  },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
@@ -33,7 +36,7 @@ const commonConfig: Configuration = {
     ],
   },
   output: {
-    filename: "[name].js",
+    filename: "[name].[fullhash].js",
     path: Path.resolve(__dirname, "dist"),
     clean: true,
   },
@@ -41,6 +44,14 @@ const commonConfig: Configuration = {
     new HtmlWebpackPlugin({
       title: "React TypeScript Webpack App",
       xhtml: true,
+      chunks: ["react"],
+    }),
+    new HtmlWebpackPlugin({
+      title: "Vanilla TypeScript Webpack App",
+      xhtml: true,
+      template: "./src/vanilla/template.html",
+      filename: "vanilla.html",
+      chunks: ["vanilla"],
     }),
   ],
 }
