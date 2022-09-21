@@ -7,7 +7,7 @@ import { createStore } from "./store"
 
 const initialState = loadState()
 
-console.log("initial state:", initialState)
+// console.log("initial state:", initialState)
 
 const { dispatch, subscribe, getState } = createStore(initialState)
 
