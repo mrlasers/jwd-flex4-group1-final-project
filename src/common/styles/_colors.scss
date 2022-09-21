@@ -38,8 +38,30 @@
   --button-border-radius: 0.25em;
 }
 
+.thenightman {
+  display: none;
+  flex-direction: row;
+  gap: 1ch;
+}
+
+.thedayman {
+  display: flex;
+  gap: 1ch;
+}
+
 .nightman {
   --dark-color: white;
   --grey-color: grey;
   --light-color: black;
+
+  .thenightman {
+    display: flex;
+    gap: 1ch;
+  }
+
+  .thedayman {
+    display: none;
+  }
 }
+
+// <i class="fa fa-moon"></i><i class="fa fa-sun-o"></i>
