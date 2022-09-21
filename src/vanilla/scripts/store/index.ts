@@ -2,7 +2,7 @@ import { nanoid } from "nanoid"
 
 import { Actions } from "./actions"
 import { reducer } from "./reducer"
-import { State, Todo } from "./types"
+import { Action, State, Todo } from "./types"
 
 type Reducer<S, A> = (state: S, action: A) => S
 
@@ -29,6 +29,10 @@ export function configureStore<S, A>({
     dispatch: (action: A) => {
       const nextState = reducer(state, action)
 
+      console.log("dispatched; rerender?", nextState !== state)
+      console.log(JSON.stringify(state, null, 2))
+      console.log(JSON.stringify(nextState, null, 2))
+
       if (nextState !== state) {
         state = nextState
         subscribers.forEach(({ fn }) => fn(state))
@@ -52,6 +56,9 @@ export function configureStore<S, A>({
 const emptyFormData: Omit<Todo, "id"> = {
   title: "",
   category: "",
+  done: false,
+  duedate: null,
+  assignedto: "",
 }
 
 export function getEmptyFormData(categoryId: string): Omit<Todo, "id"> {
@@ -67,10 +74,3 @@ export function createStore(initialState: State) {
     reducer,
   })
 }
-
-// const store = createStore({
-//   username: "",
-//   todos: [],
-// })
-
-// store.dispatch({ type: "ADD_TODO", payload: { id: "123", title: "Buttholes" } })

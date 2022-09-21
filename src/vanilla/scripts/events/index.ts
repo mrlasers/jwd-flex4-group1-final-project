@@ -1,8 +1,10 @@
 import { Actions } from "../store/actions"
 import { State } from "../store/types"
+import { changeListeners } from "./change"
 import { clickListeners } from "./click"
 import { focusListeners } from "./focus"
 import { inputListeners } from "./input"
+import { keydownListeners } from "./keydown"
 import { submitListeners } from "./submit"
 
 export type EventProps = {
@@ -16,4 +18,6 @@ export function attachEventListeners(props: EventProps) {
   focusListeners(props)
   inputListeners(props)
   submitListeners(props)
+  changeListeners(props)
+  keydownListeners(props)
 }

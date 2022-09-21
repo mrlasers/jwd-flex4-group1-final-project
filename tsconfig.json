@@ -13,5 +13,5 @@
     "allowSyntheticDefaultImports": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
-  "exclude": ["src/react"]
+  "exclude": ["src/react", "node_modules"]
 }

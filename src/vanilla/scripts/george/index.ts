@@ -1,32 +1,14 @@
 import { tryCatch } from "../helpers"
 import { getEmptyFormData } from "../store"
-import { Category, ExternalState, State, Todo } from "../store/types"
+import {
+  Category,
+  defaultState,
+  ExternalState,
+  State,
+  Todo,
+} from "../store/types"
 
 const storageKey = "saved-todo-state"
-
-const defaultCategories: Category[] = [
-  {
-    id: "work",
-    name: "Work",
-  },
-  {
-    id: "fun",
-    name: "Fun",
-  },
-]
-
-const defaultState: State = {
-  username: "",
-  todos: [],
-  categories: defaultCategories,
-  // llaaaaaaaaaazzzzzyyy
-  selectedCategory: defaultCategories[0].id, // bad, but we know it's not empty
-  form: {
-    invalid: [],
-    data: getEmptyFormData(defaultCategories[0].id),
-  },
-}
-
 export function loadState(): State {
   const json = localStorage.getItem(storageKey)
 
@@ -50,6 +32,7 @@ export function saveState({
   todos,
   categories,
   selectedCategory,
+  previouslyAssigned,
   ...rest
 }: State): void {
   // this is lazy, and not in the fun way, just the lazy way
@@ -58,6 +41,7 @@ export function saveState({
     todos,
     categories,
     selectedCategory,
+    previouslyAssigned,
   }
 
   localStorage.setItem(storageKey, JSON.stringify(toSave))

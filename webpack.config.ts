@@ -71,6 +71,7 @@ const devConfig: Webpack.Configuration = {
       chunks: ["vanilla", "styles"],
       minify: false,
       inject: true,
+      favicon: "./src/common/images/devils_task.png",
     }),
     new HtmlWebpackPlugin({
       title: "React TypeScript Webpack App",
@@ -124,8 +125,9 @@ const prodConfig: Webpack.Configuration = {
       template: "./src/vanilla/template.html",
       filename: "index.html",
       chunks: ["vanilla", "styles"],
-      minify: false,
+      minify: true,
       inject: true,
+      favicon: "./src/common/images/devils_task.png",
     }),
   ],
 }

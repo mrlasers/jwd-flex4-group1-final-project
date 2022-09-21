@@ -15,10 +15,6 @@ subscribe((state) => {
 const saveSubscription = subscribe(saveState)
 const renderSubscription = subscribe(render)
 
-let initialRender = true
-
-render(getState())
-
 attachEventListeners({ document, dispatch, getState })
 
 if (module.hot) {

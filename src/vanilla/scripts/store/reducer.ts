@@ -1,6 +1,8 @@
+import { nanoid } from "nanoid"
+
 import { getEmptyFormData } from "./"
 import { Actions } from "./actions"
-import { State } from "./types"
+import { defaultState, State } from "./types"
 
 export function reducer(state: State, { type, payload }: Actions): State {
   switch (type) {
@@ -15,7 +17,9 @@ export function reducer(state: State, { type, payload }: Actions): State {
       return {
         ...state,
         selectedCategory:
-          payload.name === "category" ? payload.value : state.selectedCategory,
+          payload.name === "category" && payload.value !== null
+            ? payload.value
+            : state.selectedCategory,
         form: {
           ...state.form,
           data: {
@@ -24,7 +28,15 @@ export function reducer(state: State, { type, payload }: Actions): State {
           },
         },
       }
-    case "ADD_TODO":
+    case "ADD_TODO": {
+      const formdata = state.form.data
+      const assignedto = formdata.assignedto.trim()
+
+      const previouslyAssigned =
+        assignedto.length && !state.previouslyAssigned.includes(assignedto)
+          ? [...state.previouslyAssigned, assignedto]
+          : state.previouslyAssigned
+
       return {
         ...state,
         form: {
@@ -32,12 +44,22 @@ export function reducer(state: State, { type, payload }: Actions): State {
           data: getEmptyFormData(state.selectedCategory),
         },
         todos: [...state.todos, payload],
+        /* i'm kinda over the shorthand syntax everywhere, so i tend to do
+           this (👇) for property assignments where the details might get lost */
+        previouslyAssigned: previouslyAssigned,
       }
+    }
     case "REMOVE_TODO":
-      console.log("removing todo...", payload)
       return {
         ...state,
         todos: state.todos.filter((todo) => todo.id !== payload),
+      }
+    case "TOGGLE_TODO_DONE":
+      return {
+        ...state,
+        todos: state.todos.map((todo) =>
+          todo.id !== payload ? todo : { ...todo, done: !todo.done }
+        ),
       }
     case "UPDATE_TODO":
       return {
@@ -46,5 +68,39 @@ export function reducer(state: State, { type, payload }: Actions): State {
           todo.id === payload.id ? payload : todo
         ),
       }
+
+    case "CLEAR_SETTINGS":
+      switch (payload) {
+        default:
+          return state
+        case "all":
+          return defaultState
+        case "suggestions":
+          return {
+            ...state,
+            previouslyAssigned: [],
+          }
+        case "todos":
+          return {
+            ...state,
+            todos: [],
+          }
+      }
+
+    case "ADD_CATEGORY": {
+      const name = payload.trim()
+
+      const nextCategories =
+        name.length && !state.categories.find((cat) => cat.name === name)
+          ? [...state.categories, { id: nanoid(), name: name }]
+          : state.categories
+
+      console.log("adding category", name, nextCategories)
+
+      return {
+        ...state,
+        categories: nextCategories,
+      }
+    }
   }
 }
