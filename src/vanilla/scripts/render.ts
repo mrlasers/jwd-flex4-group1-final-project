@@ -4,9 +4,6 @@ import { Category, State, Todo } from "./store/types"
 let previousState: State | null = null
 
 export function render(state: State): void {
-  // console.log("=== RENDER ===")
-
-  // console.log("fighter of the dayman", state.nightman)
   if (state.nightman) {
     document.body.classList.add("nightman")
   } else {
@@ -32,7 +29,6 @@ export function render(state: State): void {
   }
 
   if (state.form.data !== previousState?.form.data) {
-    // console.log("dirty form!")
     const { assignedto } = state.form.data
 
     const shadowInput = document.getElementById("assignedto-shadow")
@@ -41,8 +37,6 @@ export function render(state: State): void {
         ? state.previouslyAssigned.find((name) => !!name.match(assignedto)) ??
           ""
         : ""
-
-      // console.log("dirty shadow:", assignedto, suggestion, shadowInput.value)
 
       shadowInput.value = suggestion
     }
@@ -57,17 +51,10 @@ export function render(state: State): void {
     }
   }
 
-  // if(state.categories !== previousState?.categories) {
-  //   const catHeader = document.querySelector("#categories header")
-  //   const catList = document.querySelector("#categories ul")
-
-  // }
-
   if (
     state.categories !== previousState?.categories ||
     state.selectedCategory !== previousState?.selectedCategory
   ) {
-    // console.log("rerendering the category list")
     const catHeader = document.querySelector("#categories header")
     const catList = document.querySelector("#categories ul")
 
@@ -128,6 +115,7 @@ function renderTodoList(todos: Todo[]): string {
                 />
                 <b class="bubble"></b>
                 ${todo.title}
+
               </div>
               <button type="button" class="deleteTodo">
                 <i class="fa fa-trash"></i>

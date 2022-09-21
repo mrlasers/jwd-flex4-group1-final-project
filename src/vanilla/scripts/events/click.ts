@@ -10,20 +10,7 @@ export function clickListeners({
     const { target } = event
     console.log("click!", target)
 
-    // console.log(">>", target)
-
     if (!(target instanceof HTMLElement)) return
-
-    // if (target.matches("#duedate button")) {
-    //   console.log("#duedate button")
-    //   event.preventDefault()
-    //   event.stopPropagation()
-
-    //   const dateEl = document.getElementById("duedate") as HTMLDataElement
-    //   dateEl.value = ""
-
-    //   return
-    // }
 
     if (target.matches(".deleteTodo")) {
       const todoIdElement = target.closest("[data-todo-id]")
@@ -45,15 +32,12 @@ export function clickListeners({
       console.log("tilelist header")
       event.preventDefault()
 
-      // console.log("toggling active class")
       return target.closest(".tilelist")?.classList.toggle("active")
     }
 
-    // console.log("after:", target)
     if (target.matches("[data-settings]")) {
       console.log("[data-settings]")
       const op = target.getAttribute("data-settings")
-      // console.log("what is our op?", op)
 
       target.closest(".tilelist")?.classList.toggle("active")
 
@@ -88,16 +72,11 @@ export function clickListeners({
         }
         case "nightman": {
           return
-          // dispatch?.({
-          //   type: "SETTINGS",
-          //   payload: "nightman",
-          // })
         }
       }
     }
 
     if (target.matches(".tilelist *")) {
-      // console.log("tilelist child", target)
       return target.closest(".tilelist")?.classList.toggle("active")
     }
 
