@@ -125,7 +125,7 @@ const prodConfig: Webpack.Configuration = {
       template: "./src/vanilla/template.html",
       filename: "index.html",
       chunks: ["vanilla", "styles"],
-      minify: true,
+      minify: false,
       inject: true,
       favicon: "./src/common/images/devils_task.png",
     }),
