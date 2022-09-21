@@ -57,17 +57,18 @@ export function clickListeners({
           const res = prompt("Enter new category name")
 
           if (typeof res === "string" && res.length) {
-            dispatch?.({
+            return dispatch?.({
               type: "ADD_CATEGORY",
               payload: res,
             })
           }
         }
         case "nightman": {
-          dispatch?.({
-            type: "SETTINGS",
-            payload: "nightman",
-          })
+          return
+          // dispatch?.({
+          //   type: "SETTINGS",
+          //   payload: "nightman",
+          // })
         }
       }
     }
