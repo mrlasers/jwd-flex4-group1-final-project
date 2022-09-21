@@ -11,10 +11,10 @@ console.log("initial state:", initialState)
 
 const { dispatch, subscribe, getState } = createStore(initialState)
 
-subscribe((state) => {
-  return ((document.getElementById("spy") as HTMLElement).innerText =
-    JSON.stringify(state, null, 2))
-})
+// subscribe((state) => {
+//   return ((document.getElementById("spy") as HTMLElement).innerText =
+//     JSON.stringify(state, null, 2))
+// })
 
 const saveSubscription = subscribe(saveState)
 const renderSubscription = subscribe(render)
