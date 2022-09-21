@@ -23,6 +23,7 @@ export type Todo = {
   title: string
   category: string
   done: boolean
+  duedate: number
 }
 
 export type AddCategory = {

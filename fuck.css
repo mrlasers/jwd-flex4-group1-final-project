@@ -1,0 +1,18 @@
+/* Error: There is no module with the namespace "string".
+ *   ,
+ * 6 |   @debug string.index("hello, world", "world");
+ *   |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *   '
+ *   src\common\styles\styles.scss 6:10  setcolors()
+ *   src\common\styles\styles.scss 43:5  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: There is no module with the namespace "string".\a   \2577 \a 6 \2502    @debug string.index("hello, world", "world");\d\a   \2502           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   src\\common\\styles\\styles.scss 6:10  setcolors()\a   src\\common\\styles\\styles.scss 43:5  root stylesheet';
+}

@@ -1,0 +1,49 @@
+.bubble {
+  // line-height: 1;
+  box-sizing: border-box;
+
+  --_h: var(--bubble-height, var(--bubble-size, 0.8em));
+  --_w: var(--bubble-width, var(--bubble-height, var(--bubble-size, 0.8em)));
+  --_b: var(--bubble-border-thickness, calc(var(--_h) * 0.12));
+  --_b-color: var(--bubble-border-color, var(--bubble-color, inherit));
+
+  // filter: drop-shadow(0 0 var(--_b) black);
+
+  display: inline-block;
+  position: relative;
+  height: var(--_h);
+  width: var(--_w);
+
+  border: var(--_b) solid var(--_b-color);
+  border-radius: 100vw;
+
+  &::before {
+    // bubble fill
+    display: block;
+    position: absolute;
+    content: "";
+    top: var(--_b);
+    bottom: var(--_b);
+    left: var(--_b);
+    right: var(--_b);
+    background-color: var(--bubble-fill-color, var(--bubble-color, inherit));
+    // border: 4px solid var(--_b-color);
+    // box-shadow: 0 0 calc(var(--_b) / 2) calc(var(--_b) / 2) var(--_b-color);
+    border-radius: inherit;
+    opacity: 0;
+
+    :checked ~ & {
+      opacity: 1;
+    }
+  }
+
+  &::after {
+    // glow
+    z-index: -1;
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 var(--_b) var(--_b) var(--_b-color);
+  }
+}
