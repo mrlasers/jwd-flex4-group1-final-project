@@ -31,16 +31,21 @@
           <li title="Clear todos" data-settings="clear-todos">
             <i class="fa fa-close"></i>Todos
           </li>
-          <li title="Clear all data" data-settings="clear-all">
+          <li title="Clear all" data-settings="clear-all">
             <i class="fa fa-close"></i>All data
           </li>
           <li
             title="The Nightman Cometh"
             class="separator"
             data-settings="nightman"
+            id="nightman-toggle"
           >
-            <span class="thenightman"><i class="fa fa-moon"></i>Nightman</span>
-            <span class="thedayman"><i class="fa fa-sun-o"></i> Dayman</span>
+            <span class="thenightman" data-settings="nightman">
+              <i class="fa fa-moon" data-settings="nightman"></i>Nightman
+            </span>
+            <span class="thedayman" data-settings="nightman">
+              <i class="fa fa-sun-o" data-settings="nightman"></i> Dayman
+            </span>
           </li>
         </ul>
         <footer></footer>

@@ -5,6 +5,7 @@ $prefix: --tld;
 
   header {
     display: none;
+    // pointer-events: none;
   }
 
   ul {
@@ -67,7 +68,7 @@ $prefix: --tld;
     ul,
     footer {
       display: none;
-      pointer-events: none;
+      // pointer-events: none;
     }
   }
 
@@ -82,7 +83,7 @@ $prefix: --tld;
   header {
     z-index: 680;
     * {
-      pointer-events: none;
+      // pointer-events: none;
     }
   }
 

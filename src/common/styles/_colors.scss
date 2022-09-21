@@ -38,6 +38,12 @@
   --button-border-radius: 0.25em;
 }
 
+#nightman-toggle {
+  * {
+    // pointer-events: none;
+  }
+}
+
 .thenightman {
   display: none;
   flex-direction: row;

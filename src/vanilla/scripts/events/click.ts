@@ -9,11 +9,15 @@ export function clickListeners({
   document.addEventListener("click", (event) => {
     const { target } = event
 
+    console.log(">>", target)
+
     if (!(target instanceof HTMLElement)) return
 
     if (target.matches("#duedate button")) {
       event.preventDefault()
       event.stopPropagation()
+
+      return
     }
 
     if (target.matches(".tilelist header")) {
@@ -23,7 +27,8 @@ export function clickListeners({
       return target.closest(".tilelist")?.classList.toggle("active")
     }
 
-    if (target.matches("#settings li")) {
+    console.log("after:", target)
+    if (target.matches("[data-settings]")) {
       const op = target.getAttribute("data-settings")
       console.log("what is our op?", op)
 
@@ -32,7 +37,7 @@ export function clickListeners({
       switch (op) {
         default:
           target.closest(".tilelist")?.classList.toggle("active")
-          return
+          return null
         case "clear-suggestions":
           return dispatch?.({
             type: "SETTINGS",
@@ -67,10 +72,10 @@ export function clickListeners({
       }
     }
 
-    // if (target.matches(".tilelist *")) {
-    //   console.log("tilelist child", target)
-    //   return target.closest(".tilelist")?.classList.toggle("active")
-    // }
+    if (target.matches(".tilelist *")) {
+      console.log("tilelist child", target)
+      return target.closest(".tilelist")?.classList.toggle("active")
+    }
 
     if (target.matches(".deleteTodo")) {
       const todoIdElement = target.closest("[data-todo-id]")
@@ -78,16 +83,18 @@ export function clickListeners({
         const todoId = todoIdElement.getAttribute("data-todo-id")
 
         if (todoId) {
-          dispatch?.({
+          return dispatch?.({
             type: "REMOVE_TODO",
             payload: todoId,
           })
         }
       }
+
+      return
     }
 
     if (target.matches("#duedate button")) {
-      dispatch?.({
+      return dispatch?.({
         type: "UPDATE_FORM",
         payload: {
           name: "duedate",
