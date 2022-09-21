@@ -94,10 +94,11 @@ export function reducer(state: State, { type, payload }: Actions): State {
 
     case "ADD_CATEGORY": {
       const name = payload.trim()
+      const id = nanoid()
 
       const nextCategories =
         name.length && !state.categories.find((cat) => cat.name === name)
-          ? [...state.categories, { id: nanoid(), name: name }]
+          ? [...state.categories, { id: id, name: name }]
           : state.categories
 
       // console.log("adding category", name, nextCategories)
@@ -105,6 +106,7 @@ export function reducer(state: State, { type, payload }: Actions): State {
       return {
         ...state,
         categories: nextCategories,
+        selectedCategory: id,
       }
     }
   }
