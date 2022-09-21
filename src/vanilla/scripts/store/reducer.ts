@@ -100,7 +100,7 @@ export function reducer(state: State, { type, payload }: Actions): State {
           ? [...state.categories, { id: nanoid(), name: name }]
           : state.categories
 
-      console.log("adding category", name, nextCategories)
+      // console.log("adding category", name, nextCategories)
 
       return {
         ...state,

@@ -4,9 +4,9 @@ import { Category, State, Todo } from "./store/types"
 let previousState: State | null = null
 
 export function render(state: State): void {
-  console.log("=== RENDER ===")
+  // console.log("=== RENDER ===")
 
-  console.log("fighter of the dayman", state.nightman)
+  // console.log("fighter of the dayman", state.nightman)
   if (state.nightman) {
     document.body.classList.add("nightman")
   } else {
@@ -32,7 +32,7 @@ export function render(state: State): void {
   }
 
   if (state.form.data !== previousState?.form.data) {
-    console.log("dirty form!")
+    // console.log("dirty form!")
     const { assignedto } = state.form.data
 
     const shadowInput = document.getElementById("assignedto-shadow")
@@ -42,7 +42,7 @@ export function render(state: State): void {
           ""
         : ""
 
-      console.log("dirty shadow:", assignedto, suggestion, shadowInput.value)
+      // console.log("dirty shadow:", assignedto, suggestion, shadowInput.value)
 
       shadowInput.value = suggestion
     }
@@ -67,7 +67,7 @@ export function render(state: State): void {
     state.categories !== previousState?.categories ||
     state.selectedCategory !== previousState?.selectedCategory
   ) {
-    console.log("rerendering the category list")
+    // console.log("rerendering the category list")
     const catHeader = document.querySelector("#categories header")
     const catList = document.querySelector("#categories ul")
 

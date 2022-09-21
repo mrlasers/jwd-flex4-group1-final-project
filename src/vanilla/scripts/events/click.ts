@@ -9,7 +9,7 @@ export function clickListeners({
   document.addEventListener("click", (event) => {
     const { target } = event
 
-    console.log(">>", target)
+    // console.log(">>", target)
 
     if (!(target instanceof HTMLElement)) return
 
@@ -23,14 +23,14 @@ export function clickListeners({
     if (target.matches(".tilelist header")) {
       event.preventDefault()
 
-      console.log("toggling active class")
+      // console.log("toggling active class")
       return target.closest(".tilelist")?.classList.toggle("active")
     }
 
-    console.log("after:", target)
+    // console.log("after:", target)
     if (target.matches("[data-settings]")) {
       const op = target.getAttribute("data-settings")
-      console.log("what is our op?", op)
+      // console.log("what is our op?", op)
 
       target.closest(".tilelist")?.classList.toggle("active")
 
@@ -73,7 +73,7 @@ export function clickListeners({
     }
 
     if (target.matches(".tilelist *")) {
-      console.log("tilelist child", target)
+      // console.log("tilelist child", target)
       return target.closest(".tilelist")?.classList.toggle("active")
     }
 
