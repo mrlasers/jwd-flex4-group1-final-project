@@ -22,6 +22,10 @@
   }
 }
 
+button * {
+  pointer-events: none;
+}
+
 body {
   > * {
     opacity: 1;
@@ -258,6 +262,7 @@ fieldset {
   }
 }
 
+section#todoList,
 section#todoLizt {
   label {
     *:last-child {

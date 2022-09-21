@@ -15,7 +15,7 @@ export function render(state: State): void {
     document.title = state.username ? `${state.username}’s Tasks` : `Your Tasks`
   }
 
-  if (state.todos !== previousState?.todos && state.todos.length > 0) {
+  if (state.todos !== previousState?.todos) {
     const todoListEl = document.getElementById("todoList") as HTMLElement // bad
 
     todoListEl.innerHTML = renderTodoList(state.todos)

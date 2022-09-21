@@ -34,9 +34,10 @@ export function reducer(state: State, { type, payload }: Actions): State {
         todos: [...state.todos, payload],
       }
     case "REMOVE_TODO":
+      console.log("removing todo...", payload)
       return {
         ...state,
-        todos: state.todos.filter((todo) => todo.id !== payload.id),
+        todos: state.todos.filter((todo) => todo.id !== payload),
       }
     case "UPDATE_TODO":
       return {

@@ -7,8 +7,12 @@ import { createStore } from "./store"
 
 const { dispatch, subscribe, getState } = createStore(loadState())
 
-const saveSubscription = subscribe(saveState)
+subscribe((state) => {
+  return ((document.getElementById("spy") as HTMLElement).innerText =
+    JSON.stringify(state, null, 2))
+})
 
+const saveSubscription = subscribe(saveState)
 const renderSubscription = subscribe(render)
 
 let initialRender = true

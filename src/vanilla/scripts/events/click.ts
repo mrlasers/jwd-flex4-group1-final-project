@@ -18,12 +18,13 @@ export function clickListeners({
     }
 
     if (target.matches(".deleteTodo[data-todo-id]")) {
-      andThen(target.getAttribute("data-todo-id"), (payload) =>
+      andThen(target.getAttribute("data-todo-id"), (payload) => {
+        console.log("deleting id", payload)
         dispatch?.({
           type: "REMOVE_TODO",
           payload,
         })
-      )
+      })
     }
   })
 }
