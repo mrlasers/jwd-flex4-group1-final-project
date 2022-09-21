@@ -13,3 +13,7 @@ export function tryCatch<A>(
     }
   }
 }
+
+export function andThen<A>(somefin: A | undefined | null, fn: (a: A) => any) {
+  return typeof somefin === "undefined" || somefin === null ? null : fn(somefin)
+}

@@ -18,10 +18,7 @@ export function render(state: State): void {
   if (state.todos !== previousState?.todos && state.todos.length > 0) {
     const todoListEl = document.getElementById("todoList") as HTMLElement // bad
 
-    todoListEl.innerHTML =
-      "<ul>" +
-      state.todos.map((todo) => `<h2>${todo.title}</h2>`).join("") +
-      "</ul>"
+    todoListEl.innerHTML = renderTodoList(state.todos)
   }
 
   if (state.selectedCategory !== previousState?.selectedCategory) {
@@ -56,4 +53,28 @@ function categoryToHtml(selectedCategory: string) {
               </label>
             </li>`
   }
+}
+
+function renderTodoList(todos: Todo[]): string {
+  return (
+    "<ul>" +
+    todos
+      .map(
+        (todo) => `
+          <li>
+            <label>
+              <div>
+                <input type="checkbox" name="category" value="buttholes2" />
+                <b class="bubble"></b>
+                ${todo.title}
+              </div>
+              <button type="button" class="deleteTodo" data-todo-id="${todo.id}">
+                <i class="fa fa-trash"></i>
+              </button>
+            </label>
+          </li>`
+      )
+      .join("\n") +
+    "</ul>"
+  )
 }
