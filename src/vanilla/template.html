@@ -4,12 +4,111 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css"
+      integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY="
+      crossorigin="anonymous"
+    />
     <title>Ice, Ice, Baby!</title>
   </head>
-  <body>
-    <h1>Ice, Ice, Baby!</h1>
-    <form>
-      <input type="text" data-lpignore placeholder="Ice, Ice, Baby" />
-    </form>
+  <body class="loading">
+    <header>
+      <div class="languagePicker">
+        <img
+          src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.4/flags/4x3/us.svg"
+          alt="USA Flag (English)"
+        />
+
+        <img
+          src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.4/flags/4x3/es.svg"
+          alt="Spain Flag (Spanish)"
+        />
+      </div>
+      <nav class="links">
+        <ul>
+          <li>
+            <a href="/" title="View React version"
+              ><i class="fa fa-react"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              title="View source on Github"
+              href="https://github.com/mrlasers/jwd-flex4-group1-final-project"
+              target="_blank"
+            >
+              <i class="fa fa-github"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <header class="greeting">
+        <span>Hello, </span>
+        <input
+          type="text"
+          placeholder="[your name]"
+          name="username"
+          id="username"
+          data-lpignore="true"
+        />
+      </header>
+      <form id="newTodoForm">
+        <h1>Create a todo</h1>
+        <label>
+          What's on your todo list?
+          <input
+            class="overflow"
+            type="text"
+            name="title"
+            placeholder="e.g., take a nap, do your homework"
+            data-lpignore="true"
+            required
+          />
+        </label>
+        <fieldset id="categories" class="tilelist">
+          <legend>Pick a category</legend>
+          <header>It's a list!!!!!!!!!!!</header>
+          <ul>
+            <!-- <li>
+              <label>
+                <input type="radio" name="category" value="buttholes" checked />
+                <b class="bubble" required></b>
+                buttholes
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="category" value="buttholes2" />
+                <b class="bubble" required></b>
+                buttholes
+              </label>
+            </li> -->
+          </ul>
+        </fieldset>
+        <button type="submit">Add todo</button>
+      </form>
+      <section id="todoList"></section>
+      <section id="todoLizt" class="tilelist list">
+        <ul>
+          <li>
+            <label>
+              <div>
+                <input type="checkbox" name="category" value="buttholes2" />
+                <b class="bubble"></b>
+                Gotta do this thing
+              </div>
+              <button type="button" class="deleteTodo">
+                <i class="fa fa-trash"></i>
+              </button>
+            </label>
+          </li>
+        </ul>
+      </section>
+      <pre id="spy"></pre>
+    </main>
+    <footer>“Don’t be a narc.” –Tyler Durden</footer>
   </body>
 </html>

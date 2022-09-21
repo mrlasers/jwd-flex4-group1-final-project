@@ -23,9 +23,7 @@
   }
 }
 
-.bubble {
-  // --bubble-border-color: var(--bubble-color);
-
+.bbb_bubble {
   position: relative;
   display: block;
   flex-direction: column;
@@ -59,13 +57,6 @@
   }
 
   &[data-filled="true"]::after {
-    // background-color: var(--bubble-color);
     opacity: 1;
   }
-
-  // input:checked ~ b {
-  //   &::after {
-  //     background-color: dodgerblue;
-  //   }
-  // }
 }

@@ -41,12 +41,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.0.6"],\
             ["@types/webpack", "npm:5.28.0"],\
             ["@types/webpack-dev-server", "npm:4.7.2"],\
+            ["@types/webpack-env", "npm:1.18.0"],\
             ["@yarnpkg/pnpify", "npm:4.0.0-rc.18"],\
             ["css-loader", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:6.7.1"],\
             ["html-webpack-plugin", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:5.5.0"],\
             ["i18next", "npm:21.9.1"],\
             ["jest", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:29.0.3"],\
+            ["mini-css-extract-plugin", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:2.6.1"],\
             ["nanoid", "npm:3.3.4"],\
+            ["node-env", "npm:0.1.8"],\
             ["react", "npm:18.2.0"],\
             ["react-country-flag", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:3.0.2"],\
             ["react-dom", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:18.2.0"],\
@@ -2104,6 +2107,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/webpack-dev-server", "npm:4.7.2"],\
             ["webpack-dev-server", "virtual:0e6753e8728de9a72b203be8730e1f7605cbcd6873e43ffd6f87a7a38da589abae37e59dda5f411105336dff053821420034d7120d36c28d4cbcc6d403cfbaa4#npm:4.11.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/webpack-env", [\
+        ["npm:1.18.0", {\
+          "packageLocation": "./.yarn/cache/@types-webpack-env-npm-1.18.0-0bb1d2305c-ecf4daa31c.zip/node_modules/@types/webpack-env/",\
+          "packageDependencies": [\
+            ["@types/webpack-env", "npm:1.18.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4913,12 +4925,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.0.6"],\
             ["@types/webpack", "npm:5.28.0"],\
             ["@types/webpack-dev-server", "npm:4.7.2"],\
+            ["@types/webpack-env", "npm:1.18.0"],\
             ["@yarnpkg/pnpify", "npm:4.0.0-rc.18"],\
             ["css-loader", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:6.7.1"],\
             ["html-webpack-plugin", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:5.5.0"],\
             ["i18next", "npm:21.9.1"],\
             ["jest", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:29.0.3"],\
+            ["mini-css-extract-plugin", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:2.6.1"],\
             ["nanoid", "npm:3.3.4"],\
+            ["node-env", "npm:0.1.8"],\
             ["react", "npm:18.2.0"],\
             ["react-country-flag", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:3.0.2"],\
             ["react-dom", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:18.2.0"],\
@@ -6689,6 +6704,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["mini-css-extract-plugin", [\
+        ["npm:2.6.1", {\
+          "packageLocation": "./.yarn/cache/mini-css-extract-plugin-npm-2.6.1-4e6d2beaf0-df60840404.zip/node_modules/mini-css-extract-plugin/",\
+          "packageDependencies": [\
+            ["mini-css-extract-plugin", "npm:2.6.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:2.6.1", {\
+          "packageLocation": "./.yarn/__virtual__/mini-css-extract-plugin-virtual-d1faeb30c5/0/cache/mini-css-extract-plugin-npm-2.6.1-4e6d2beaf0-df60840404.zip/node_modules/mini-css-extract-plugin/",\
+          "packageDependencies": [\
+            ["mini-css-extract-plugin", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:2.6.1"],\
+            ["@types/webpack", "npm:5.28.0"],\
+            ["schema-utils", "npm:4.0.0"],\
+            ["webpack", "virtual:c14e780c146b17d01df2efab2f6d8d4343f5d26a99b1ef33482227e370b95c6dbeba973ee9cdda466003322add73d97b7c22f4da74a4fb2240714d9e223d6685#npm:5.74.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/webpack",\
+            "webpack"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["minimalistic-assert", [\
         ["npm:1.0.1", {\
           "packageLocation": "./.yarn/cache/minimalistic-assert-npm-1.0.1-dc8bb23d29-cc7974a926.zip/node_modules/minimalistic-assert/",\
@@ -6897,6 +6935,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["no-case", "npm:3.0.4"],\
             ["lower-case", "npm:2.0.2"],\
             ["tslib", "npm:2.4.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["node-env", [\
+        ["npm:0.1.8", {\
+          "packageLocation": "./.yarn/cache/node-env-npm-0.1.8-f5e2fccdf2-382f5f7e4c.zip/node_modules/node-env/",\
+          "packageDependencies": [\
+            ["node-env", "npm:0.1.8"]\
           ],\
           "linkType": "HARD"\
         }]\

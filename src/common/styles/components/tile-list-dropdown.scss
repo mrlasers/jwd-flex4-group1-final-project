@@ -1,0 +1,145 @@
+$prefix: --tld;
+
+@mixin not-dropdown($direction: column) {
+  overflow: hidden;
+
+  header {
+    display: none;
+  }
+
+  ul {
+    position: static;
+    display: flex;
+    flex-direction: $direction;
+    // border-radius: 0;
+
+    // li > * {
+    //   flex-direction: row;
+    // }
+  }
+}
+
+@mixin list {
+  @include not-dropdown(column);
+
+  ul {
+    overflow: hidden;
+  }
+
+  li {
+    border-radius: 0;
+    // > * {
+    //   flex-direction: row;
+    // }
+  }
+}
+
+@mixin tiles {
+  @include not-dropdown(row);
+
+  ul {
+    gap: 0.5em;
+    background-color: transparent;
+    justify-content: stretch;
+    border-radius: 0;
+    overflow: initial;
+
+    li {
+      flex: 1;
+      // background-color: papayawhip;
+      // border-radius: 0.5em;
+      overflow: hidden;
+      // display: flex;
+      flex-direction: column;
+      // justify-content: center;
+      align-items: center;
+      // > * {
+      //   flex-direction: column;
+      // }
+    }
+  }
+}
+
+.tilelist {
+  position: relative;
+
+  &:not(.list, .tiles, .active) {
+    ul {
+      display: none;
+    }
+  }
+
+  &.list {
+    @include list;
+  }
+
+  &.tiles {
+    @include tiles;
+  }
+
+  ul {
+    position: absolute;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    left: 0;
+    top: 100%;
+    overflow: hidden;
+  }
+
+  li {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    > * {
+      // outline: 1px solid dodgerblue;
+      // display: block;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+  }
+}
+
+@media only screen and (min-width: 0) and (max-width: 399px) {
+  .tilelist {
+    // &:not(.list) {
+    //   &.active {
+    //     ul {
+    //       border-top-left-radius: 0;
+    //     }
+    //   }
+    // }
+
+    &:not(.tiles, .list) {
+      &.active {
+        header {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+
+      ul {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+      li {
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 599px) {
+  .tilelist:not(.dropdown, .tiles) {
+    @include list;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .tilelist:not(.dropdown, .list) {
+    @include tiles;
+  }
+}

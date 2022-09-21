@@ -1451,6 +1451,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/webpack-env@npm:^1.18.0":
+  version: 1.18.0
+  resolution: "@types/webpack-env@npm:1.18.0"
+  checksum: ecf4daa31cb37d474ac0ce058d83a3cadeb9881ca8107ae93c2299eaa9954943aae09b43e143c62ccbe4288a14db00c918c9debd707afe17c3998f873eaabc59
+  languageName: node
+  linkType: hard
+
 "@types/webpack@npm:^5.28.0":
   version: 5.28.0
   resolution: "@types/webpack@npm:5.28.0"
@@ -3774,12 +3781,15 @@ __metadata:
     "@types/react-dom": ^18
     "@types/webpack": ^5.28.0
     "@types/webpack-dev-server": ^4.7.2
+    "@types/webpack-env": ^1.18.0
     "@yarnpkg/pnpify": ^4.0.0-rc.18
     css-loader: ^6.7.1
     html-webpack-plugin: ^5.5.0
     i18next: ^21.9.1
     jest: ^29.0.3
+    mini-css-extract-plugin: ^2.6.1
     nanoid: 3.3.4
+    node-env: ^0.1.6
     react: ^18.2.0
     react-country-flag: ^3.0.2
     react-dom: ^18.2.0
@@ -5312,6 +5322,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mini-css-extract-plugin@npm:^2.6.1":
+  version: 2.6.1
+  resolution: "mini-css-extract-plugin@npm:2.6.1"
+  dependencies:
+    schema-utils: ^4.0.0
+  peerDependencies:
+    webpack: ^5.0.0
+  checksum: df60840404878c4832b4104799fd29c5a89b06b1e377956c8d4a5729efe0ef301a52e5087d6f383871df5e69a8445922a0ae635c11abf412d7645a7096d0e973
+  languageName: node
+  linkType: hard
+
 "minimalistic-assert@npm:^1.0.0":
   version: 1.0.1
   resolution: "minimalistic-assert@npm:1.0.1"
@@ -5506,6 +5527,13 @@ __metadata:
     lower-case: ^2.0.2
     tslib: ^2.0.3
   checksum: 0b2ebc113dfcf737d48dde49cfebf3ad2d82a8c3188e7100c6f375e30eafbef9e9124aadc3becef237b042fd5eb0aad2fd78669c20972d045bbe7fea8ba0be5c
+  languageName: node
+  linkType: hard
+
+"node-env@npm:^0.1.6":
+  version: 0.1.8
+  resolution: "node-env@npm:0.1.8"
+  checksum: 382f5f7e4ca87cc7e1250ab0527d086a1b0441e29b34fa5afcd37c51970da31be89472f2b3889f7e96dfca4db4abd6220d84278980c82379d68375cce5cb138c
   languageName: node
   linkType: hard
 
