@@ -33,6 +33,7 @@ export function saveState({
   categories,
   selectedCategory,
   previouslyAssigned,
+  nightman,
   ...rest
 }: State): void {
   // this is lazy, and not in the fun way, just the lazy way
@@ -42,6 +43,7 @@ export function saveState({
     categories,
     selectedCategory,
     previouslyAssigned,
+    nightman,
   }
 
   localStorage.setItem(storageKey, JSON.stringify(toSave))

@@ -20,31 +20,33 @@ export function clickListeners({
       event.preventDefault()
 
       console.log("toggling active class")
-      target.closest(".tilelist")?.classList.toggle("active")
+      return target.closest(".tilelist")?.classList.toggle("active")
     }
 
     if (target.matches("#settings li")) {
       const op = target.getAttribute("data-settings")
+      console.log("what is our op?", op)
 
       target.closest(".tilelist")?.classList.toggle("active")
 
       switch (op) {
         default:
+          target.closest(".tilelist")?.classList.toggle("active")
           return
         case "clear-suggestions":
           return dispatch?.({
-            type: "CLEAR_SETTINGS",
-            payload: "suggestions",
+            type: "SETTINGS",
+            payload: "clear_suggestions",
           })
         case "clear-todos":
           return dispatch?.({
-            type: "CLEAR_SETTINGS",
-            payload: "todos",
+            type: "SETTINGS",
+            payload: "clear_todos",
           })
         case "clear-all":
           return dispatch?.({
-            type: "CLEAR_SETTINGS",
-            payload: "all",
+            type: "SETTINGS",
+            payload: "clear_all",
           })
         case "add-category": {
           const res = prompt("Enter new category name")
@@ -55,15 +57,20 @@ export function clickListeners({
               payload: res,
             })
           }
-          // const modal = document.querySelector("#modal")
-          // if (modal instanceof HTMLDialogElement) {
-          //   modal.innerHTML = `<h3>Add category</h3><button onclick="${() =>
-          //     console.log("buttholes")}">Buttholes</button>`
-          //   modal.showModal()
-          // }
+        }
+        case "nightman": {
+          dispatch?.({
+            type: "SETTINGS",
+            payload: "nightman",
+          })
         }
       }
     }
+
+    // if (target.matches(".tilelist *")) {
+    //   console.log("tilelist child", target)
+    //   return target.closest(".tilelist")?.classList.toggle("active")
+    // }
 
     if (target.matches(".deleteTodo")) {
       const todoIdElement = target.closest("[data-todo-id]")

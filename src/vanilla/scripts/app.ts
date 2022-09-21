@@ -5,7 +5,11 @@ import { loadState, saveState } from "./george"
 import { render } from "./render"
 import { createStore } from "./store"
 
-const { dispatch, subscribe, getState } = createStore(loadState())
+const initialState = loadState()
+
+console.log("initial state:", initialState)
+
+const { dispatch, subscribe, getState } = createStore(initialState)
 
 subscribe((state) => {
   return ((document.getElementById("spy") as HTMLElement).innerText =

@@ -10,5 +10,8 @@ export type Actions =
   | Action<"TOGGLE_TODO_DONE", TodoId>
   | Action<"UPDATE_TODO", Todo>
   | Action<"UPDATE_FORM", { name: string; value: string | null }>
-  | Action<"CLEAR_SETTINGS", "all" | "suggestions" | "todos">
+  | Action<
+      "SETTINGS",
+      "clear_all" | "clear_suggestions" | "clear_todos" | "nightman"
+    >
   | Action<"ADD_CATEGORY", string>

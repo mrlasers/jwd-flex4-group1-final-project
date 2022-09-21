@@ -64,8 +64,10 @@ $prefix: --tld;
   position: relative;
 
   &:not(.list, .tiles, .active) {
-    ul {
+    ul,
+    footer {
       display: none;
+      pointer-events: none;
     }
   }
 
@@ -77,8 +79,21 @@ $prefix: --tld;
     @include tiles;
   }
 
-  header * {
-    pointer-events: none;
+  header {
+    z-index: 680;
+    * {
+      pointer-events: none;
+    }
+  }
+
+  footer {
+    z-index: 600;
+    background-color: rgba(0 0 0 / 0.15);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
   }
 
   ul {
@@ -110,14 +125,6 @@ $prefix: --tld;
 
 @media only screen and (min-width: 0) and (max-width: 399px) {
   .tilelist {
-    // &:not(.list) {
-    //   &.active {
-    //     ul {
-    //       border-top-left-radius: 0;
-    //     }
-    //   }
-    // }
-
     &:not(.tiles, .list) {
       &.active {
         header {

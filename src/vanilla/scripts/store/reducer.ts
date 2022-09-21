@@ -69,21 +69,26 @@ export function reducer(state: State, { type, payload }: Actions): State {
         ),
       }
 
-    case "CLEAR_SETTINGS":
+    case "SETTINGS":
       switch (payload) {
         default:
           return state
-        case "all":
+        case "clear_all":
           return defaultState
-        case "suggestions":
+        case "clear_suggestions":
           return {
             ...state,
             previouslyAssigned: [],
           }
-        case "todos":
+        case "clear_todos":
           return {
             ...state,
             todos: [],
+          }
+        case "nightman":
+          return {
+            ...state,
+            nightman: !state.nightman,
           }
       }
 

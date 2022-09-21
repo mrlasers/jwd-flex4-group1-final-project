@@ -29,9 +29,9 @@ export function configureStore<S, A>({
     dispatch: (action: A) => {
       const nextState = reducer(state, action)
 
-      console.log("dispatched; rerender?", nextState !== state)
-      console.log(JSON.stringify(state, null, 2))
-      console.log(JSON.stringify(nextState, null, 2))
+      // console.log("dispatched; rerender?", nextState !== state)
+      // console.log(JSON.stringify(state, null, 2))
+      // console.log(JSON.stringify(nextState, null, 2))
 
       if (nextState !== state) {
         state = nextState

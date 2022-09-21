@@ -13,7 +13,7 @@
     <title>Ice, Ice, Baby!</title>
   </head>
   <body class="loading">
-    <dialog id="modal">modal</dialog>
+    <!-- <dialog id="modal">modal</dialog> -->
     <header>
       <div id="settings" class="tilelist dropdown">
         <header><i class="fa fa-gear"></i></header>
@@ -31,14 +31,18 @@
           <li title="Clear todos" data-settings="clear-todos">
             <i class="fa fa-close"></i>Todos
           </li>
-          <li
-            title="Clear all data"
-            class="separator"
-            data-settings="clear-all"
-          >
+          <li title="Clear all data" data-settings="clear-all">
             <i class="fa fa-close"></i>All data
           </li>
+          <li
+            title="The Nightman Cometh"
+            class="separator"
+            data-settings="nightman"
+          >
+            <i class="fa fa-moon"></i><i class="fa fa-sun-o"></i>Nightman
+          </li>
         </ul>
+        <footer></footer>
       </div>
       <!-- <div class="languagePicker">
         <img
@@ -99,6 +103,7 @@
           <legend>Pick a category</legend>
           <header>It's a list!!!!!!!!!!!</header>
           <ul></ul>
+          <footer></footer>
         </fieldset>
         <fieldset id="duedate">
           <label

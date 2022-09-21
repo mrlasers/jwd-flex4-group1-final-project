@@ -29,6 +29,7 @@ export type State = {
     invalid: Array<keyof Omit<Todo, "id">>
     data: Omit<Todo, "id">
   }
+  nightman: boolean
 }
 
 export type ExternalState = Omit<State, "form">
@@ -55,4 +56,5 @@ export const defaultState: State = {
     invalid: [],
     data: getEmptyFormData(defaultCategories[0].id),
   },
+  nightman: false,
 }

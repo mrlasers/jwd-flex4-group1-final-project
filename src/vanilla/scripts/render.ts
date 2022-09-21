@@ -5,6 +5,14 @@ let previousState: State | null = null
 
 export function render(state: State): void {
   console.log("=== RENDER ===")
+
+  console.log("fighter of the dayman", state.nightman)
+  if (state.nightman) {
+    document.body.classList.add("nightman")
+  } else {
+    document.body.classList.remove("nightman")
+  }
+
   if (state.username !== previousState?.username) {
     document.title = state.username ? `${state.username}’s Tasks` : `Your Tasks`
 
